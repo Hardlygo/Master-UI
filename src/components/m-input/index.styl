@@ -1,0 +1,60 @@
+// ---文本提示样式
+_placeholder(color = #97a8be, pixel = 14px, weight = 400)
+    &::-webkit-input-placeholder
+        color color
+    &:-moz-placeholder
+        color color
+    &::-moz-placeholder
+        color color
+    &:-ms-input-placeholder
+        color color
+    if (pixel != null)
+        font-size pixel
+    if (weight != null)
+        font-weight weight
+.input-item
+    position relative
+    padding 0.75rem 0.875rem
+    width 100%
+    box-sizing border-box
+    display flex
+    flex-wrap nowrap
+    border-bottom 1px solid rgba(232, 232, 232, 1)
+    .input-item-label
+        box-sizing border-box
+        flex 0 0 98px
+        align-self center
+        text-align left
+        font-size 0.875rem
+        font-weight 400
+        color rgba(51, 51, 51, 1)
+    .input-item-body
+        position relative
+        display flex
+        justify-content center
+        align-items center
+        box-sizing border-box
+        border none
+        flex 1
+        overflow hidden
+        .input-item-field
+            flex 1
+            outline none
+            appearance none
+            overflow hidden
+            border 0
+            _placeholder()
+            &:disabled
+                color #969799
+                background-color transparent
+                cursor not-allowed
+                opacity 1
+                -webkit-text-fill-color currentColor // fix disabled color in iOS
+        .clear
+            flex none
+            // margin-right 8px
+    .input-item-right-icon
+        color #969799
+        flex-shrink 0
+    .input-item-right-btn
+        flex-shrink 0
