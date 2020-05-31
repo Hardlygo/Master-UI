@@ -1,0 +1,24 @@
+
+.m-cell-group
+    position relative
+    box-sizing border-box
+    background-color $cell-group-background-color
+    &_title
+        padding $cell-group-title-padding
+        color $cell-group-title-color
+        font-size $cell-group-title-font-size
+        line-height $cell-group-title-line-height
+    &_body
+        position relative
+        display block
+.m-cell-group--border
+    &::after
+        position absolute
+        box-sizing border-box
+        content ' '
+        pointer-events none
+        right 0
+        bottom 0
+        left 0
+        border-bottom $border-width-base solid $border-color
+        transform scaleY(0.5)
