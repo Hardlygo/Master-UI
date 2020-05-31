@@ -1,14 +1,14 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-30 16:04:40
- * @LastEditTime: 2020-05-31 19:29:17
+ * @LastEditTime: 2020-05-31 21:32:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \blog_vuee:\JSWorkSpace\master-ui\src\views\Test.vue
 --> 
 <template>
   <div>
-    <m-cell-group border title="输入框">
+    <m-cell-group border >
       <m-input
         type="number"
         label="文本"
