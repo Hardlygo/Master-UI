@@ -1,9 +1,9 @@
 /*
  * @Author: PENGZY
  * @since: 2020-05-15 11:52:41
- * @lastTime: 2020-05-29 10:53:29
+ * @lastTime: 2020-06-01 11:37:39
  * @LastAuthor: Do not edit
- * @FilePath: \rx-guilind:\workspace\JS\prescription-ann-v2\src\components\m-input\index.js
+ * @FilePath: \rx-guilind:\workspace\pzy\Master-UI\src\components\m-input\index.js
  * @moto: Be Curious!
  * @message: 
  */
@@ -75,7 +75,6 @@ export default {
             this.$emit('click-right-icon', event);
         },
         onClear(e) {
-            console.log(2222)
             e.preventDefault()
             this.$emit('input', '');
             this.$emit('clear', e);
@@ -221,8 +220,7 @@ export default {
             inputType = 'tel';
             inputMode = 'numeric';
         }
-
-        return (<div {...{ class: ['input-item'] }}>
+        return (<div {...{ class: ['input-item'] }} >
             {this.genLabel()}
             <div {...{ class: ['input-item-body'] }}>
                 <input  {...{ class: ['input-item-field'] }} {...inputProps} type={inputType} inputmode={inputMode} ></input>

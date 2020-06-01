@@ -1,14 +1,14 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-30 16:04:40
- * @LastEditTime: 2020-05-31 21:32:07
- * @LastEditors: Please set LastEditors
+ * @lastTime: 2020-06-01 15:32:55
+ * @LastAuthor: Do not edit
  * @Description: In User Settings Edit
- * @FilePath: \blog_vuee:\JSWorkSpace\master-ui\src\views\Test.vue
+ * @FilePath: \rx-guilind:\workspace\pzy\Master-UI\src\views\Test.vue
 --> 
 <template>
   <div>
-    <m-cell-group border >
+    <m-cell-group border>
       <m-input
         type="number"
         label="文本"
@@ -25,6 +25,35 @@
       </template> -->
       </m-input>
     </m-cell-group>
+    <m-icon
+      name="arrow-left"
+      size="26px"
+      color="green"
+    />
+    <m-icon
+      name="arrow-right"
+      size="26px"
+      color="green"
+    />
+    <m-icon
+      name="arrow-up"
+      size="26px"
+      color="green"
+    />
+    <m-icon
+      name="arrow-down"
+      size="26px"
+      color="green"
+    />
+    <m-icon
+      name="prompt-fill"
+      size="26px"
+      color="green"
+    />
+    <m-icon
+      name="https://b.yzcdn.cn/vant/icon-demo-1126.png"
+      size="26px"
+    />
     {{myVal}}
   </div>
 </template>
