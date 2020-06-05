@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-05-30 16:04:40
- * @lastTime: 2020-06-01 15:32:55
+ * @lastTime: 2020-06-01 16:39:51
  * @LastAuthor: Do not edit
  * @Description: In User Settings Edit
  * @FilePath: \rx-guilind:\workspace\pzy\Master-UI\src\views\Test.vue
@@ -24,6 +24,25 @@
         <v-btn text>发送短信</v-btn>
       </template> -->
       </m-input>
+      <m-cell
+        isLink
+        icon="https://b.yzcdn.cn/vant/icon-demo-1126.png"
+        :to="{path:'/hello'}"
+        label="名字"
+        content="彭于晏"
+      >
+      </m-cell>
+        <m-cell
+        icon="https://b.yzcdn.cn/vant/icon-demo-1126.png"
+        content="彭于晏"
+      >
+      </m-cell>
+      <m-cell
+        label="兴趣"
+        content="冲冲冲"
+      >
+
+      </m-cell>
     </m-cell-group>
     <m-icon
       name="arrow-left"
@@ -60,10 +79,13 @@
 <script>
 import MInput from "@/components/m-input";
 import MCellGroup from "@/components/m-cell-group";
+import MCell from "@/components/m-cell";
+
 export default {
   components: {
     MInput,
-    MCellGroup
+    MCellGroup,
+    MCell
   },
   data() {
     return {

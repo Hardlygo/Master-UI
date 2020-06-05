@@ -1,70 +1,131 @@
 /*
  * @Author: PENGZY
  * @since: 2020-06-01 09:38:49
- * @lastTime: 2020-06-01 15:34:57
+ * @lastTime: 2020-06-01 16:40:16
  * @LastAuthor: Do not edit
  * @FilePath: \rx-guilind:\workspace\pzy\Master-UI\src\components\m-cell\index.js
  * @moto: Be Curious!
- * @message: 
+ * @message:
  */
+import { functionalRoute } from "../../utils/router";
+import "./index.styl";
+import MIcon from "../m-icon";
 export default {
-    name: 'MCell',
-    data() {
-        return {
-
-        }
+  name: "MCell",
+  data() {
+    return {};
+  },
+  props: {
+    label: {
+      type: [String, Number],
     },
-    props: {
-        label: {
-            type: [String, Number]
-        },
-        content: {
-            type: [String, Number]
-        },
-        isLink: Boolean,
-        border: Boolean,
-        icon: String
-
+    content: {
+      type: [String, Number],
     },
-    computed: {
-        
+    isLink: Boolean,
+    url:String,
+    to:Object,
+    clickable: Boolean,
+    border: Boolean,
+    icon: String,
+    arrowDirection: {
+      type: String,
+      validator: function(value) {
+        // 这个值必须匹配下列字符串中的一个
+        return ["left", "up", "down", "right"].indexOf(value) !== -1;
+      },
+      default: "right",
     },
-    methods: {
-        genLeftIcon() {
-            
-        },
-        genLabel() {
-            const slots = this.$slots;
-            if (this.label || slots['label']) {
-                return (
-                    <div {...{ class: ["m-cell_label"] }}>
-                        {slots['label'] ? slots['label'] : this.label}
-                    </div>
-                );
-            }
-        },
-        genContent() {
-            const slots = this.$slots;
-            if (this.content || slots['content']) {
-                return (
-                    <div {...{ class: ["m-cell_content"] }}>
-                        {slots['content'] ? slots['content'] : this.content}
-                    </div>
-                );
-            }
-        },
-        genRightIcon() {
-            
-        }
+  },
+  computed: {
+    clickActive() {
+      return this.clickable || this.isLink;
     },
-    render(h) {
+    rightIconName() {
+      if (this.arrowDirection) {
+        return `arrow-${this.arrowDirection}`;
+      }
+    },
+  },
+  methods: {
+    onClick(e) {
+      this.$emit("click", e);
+      functionalRoute(this);
+    },
+    genLeftIcon() {
+      const slots = this.$slots;
+      if (slots["icon"]) {
+        return <div {...{ class: ["m-cell_lefticon"] }}>{slots["icon"]}</div>;
+      }
+      if (this.icon) {
         return (
-            <div {...{ class: ['m-cell'] }}>
-                {this.genLeftIcon()}
-                {this.genLabel()}
-                {this.genContent()}
-                {this.genRightIcon()}
-            </div>
-        )
+          <m-icon
+            name={this.icon}
+            class={"m-cell_lefticon"}
+            size="16px"
+          ></m-icon>
+        );
+      }
     },
-}
+    genLabel() {
+      const slots = this.$slots;
+      if (this.label || slots["label"]) {
+        return (
+          <div {...{ class: ["m-cell_label"] }}>
+            {slots["label"] ? slots["label"] : this.label}
+          </div>
+        );
+      }
+    },
+    genContent() {
+      const slots = this.$slots;
+      const isAlone = !this.label && !slots["label"];
+      if (this.content || slots["content"]) {
+        return (
+          <div
+            {...{
+              class: ["m-cell_content", isAlone ? "m-cell_content--alone" : ""],
+            }}
+          >
+            {slots["content"] ? slots["content"] : this.content}
+          </div>
+        );
+      }
+    },
+    genRightIcon() {
+      if (this.isLink) {
+        return (
+          <m-icon
+            name={this.rightIconName}
+            class={"m-cell_righticon"}
+            size="16px"
+          ></m-icon>
+        );
+      }
+    },
+  },
+  render(h) {
+    const cellProps = {
+      ref: "cell",
+      class: ["m-cell", this.clickActive ? "m-cell--clickable" : ""],
+      domProps: {},
+      attrs: {
+        role: this.clickActive ? "button" : "",
+        tabindex: this.clickActive ? "0" : "",
+        ...this.$attrs,
+      },
+      on: {
+        ...this.$listeners,
+        click: this.onClick,
+      },
+    };
+    return (
+      <div {...cellProps}>
+        {this.genLeftIcon()}
+        {this.genLabel()}
+        {this.genContent()}
+        {this.genRightIcon()}
+      </div>
+    );
+  },
+};

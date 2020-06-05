@@ -1,5 +1,46 @@
 
 .m-cell
+    position relative
+    display flex
+    align-items center // 垂直居中
+    box-sizing border-box
+    width 100%
+    padding $cell-vertical-padding $padding-md
+    background-color $cell-background-color
+    font-size $cell-font-size
+    color $cell-text-color
+    line-height $cell-line-height
+    overflow hidden
+    &_label, &_content
+        flex 1
+        box-sizing border-box
+    &_content
+        position relative
+        overflow hidden
+        text-align right
+        color $cell-value-color
+        vertical-align middle
+        word-wrap break-word
+        &--alone
+            color $text-color
+            text-align left
+    &_lefticon, &_righticon
+        flex none
+        min-width 1em
+        font-size $cell-icon-size
+        overflow hidden
+    &_lefticon
+        margin-right 5px
+    &_righticon
+        margin-left 5px
+    &--clickable
+        cursor pointer
+        background-color #fff
+        &:focus
+            outline none
+        &:active
+            -webkit-tap-highlight-color rgba(255, 255, 255, 0)
+            background-color $cell-active-color
     &::after
         position absolute
         box-sizing border-box
@@ -9,5 +50,7 @@
         bottom 0
         left $padding-md
         border-width $border-width-base 0 !important
-        border 0 solid $border-color
+        border-bottom 0 solid $border-color
         transform scaleY(0.5)
+    &:last-child::after, m-cell--borderless::after
+        display none
