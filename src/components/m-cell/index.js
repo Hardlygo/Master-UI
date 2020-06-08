@@ -19,12 +19,15 @@ export default {
     label: {
       type: [String, Number],
     },
+    description: {
+      type: String,
+    },
     content: {
       type: [String, Number],
     },
     isLink: Boolean,
-    url:String,
-    to:Object,
+    url: String,
+    to: [Object,String],
     clickable: Boolean,
     border: Boolean,
     icon: String,
@@ -36,6 +39,16 @@ export default {
       },
       default: "right",
     },
+    iconClass: null,
+    labelClass: null,
+    descriptionClass: null,
+    contentClass: null,
+    arrowClass: null,
+    iconStyle: null,
+    labelStyle: null,
+    descriptionStyle: null,
+    contentStyle: null,
+    arrowStyle: null,
   },
   computed: {
     clickActive() {
@@ -55,15 +68,32 @@ export default {
     genLeftIcon() {
       const slots = this.$slots;
       if (slots["icon"]) {
-        return <div {...{ class: ["m-cell_lefticon"] }}>{slots["icon"]}</div>;
+        return (
+          <div {...{ class: ["m-cell_lefticon", this.iconClass] }} style={this.iconStyle}>
+            {slots["icon"]}
+          </div>
+        );
       }
       if (this.icon) {
         return (
           <m-icon
             name={this.icon}
-            class={"m-cell_lefticon"}
+            class={["m-cell_lefticon", this.iconClass]}
+            style={this.iconStyle}
             size="16px"
           ></m-icon>
+        );
+      }
+    },
+    genDescription() {
+      const slots = this.$slots;
+      const showDescription = this.description || slots["description"];
+
+      if (showDescription) {
+        return (
+          <div class={["m-cell_label_description", this.descriptionClass]} style={this.descriptionStyle}>
+            {slots["description"] ? slots["description"] : this.description}
+          </div>
         );
       }
     },
@@ -71,12 +101,14 @@ export default {
       const slots = this.$slots;
       if (this.label || slots["label"]) {
         return (
-          <div {...{ class: ["m-cell_label"] }}>
+          <div {...{ class: ["m-cell_label",this.labelClass] }} style={this.labelStyle}>
             {slots["label"] ? slots["label"] : this.label}
+            {this.genDescription()}
           </div>
         );
       }
     },
+
     genContent() {
       const slots = this.$slots;
       const isAlone = !this.label && !slots["label"];
@@ -84,8 +116,9 @@ export default {
         return (
           <div
             {...{
-              class: ["m-cell_content", isAlone ? "m-cell_content--alone" : ""],
+              class: ["m-cell_content", isAlone ? "m-cell_content--alone" : "",this.contentClass],
             }}
+            style={this.contentStyle}
           >
             {slots["content"] ? slots["content"] : this.content}
           </div>
@@ -97,7 +130,8 @@ export default {
         return (
           <m-icon
             name={this.rightIconName}
-            class={"m-cell_righticon"}
+            class={["m-cell_righticon",this.arrowClass]}
+            style={this.arrowStyle}
             size="16px"
           ></m-icon>
         );

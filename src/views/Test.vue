@@ -27,12 +27,13 @@
       <m-cell
         isLink
         icon="https://b.yzcdn.cn/vant/icon-demo-1126.png"
-        :to="{path:'/hello'}"
+        to="hello"
+        description="干巴爹"
         label="名字"
         content="彭于晏"
       >
       </m-cell>
-        <m-cell
+      <m-cell
         icon="https://b.yzcdn.cn/vant/icon-demo-1126.png"
         content="彭于晏"
       >
@@ -74,18 +75,21 @@
       size="26px"
     />
     {{myVal}}
+    <m-button text="点我点我"></m-button>
   </div>
 </template>
 <script>
 import MInput from "@/components/m-input";
 import MCellGroup from "@/components/m-cell-group";
 import MCell from "@/components/m-cell";
+import MButton from "@/components/m-button";
 
 export default {
   components: {
     MInput,
     MCellGroup,
-    MCell
+    MCell,
+    MButton
   },
   data() {
     return {

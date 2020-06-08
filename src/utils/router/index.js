@@ -1,6 +1,5 @@
 export function route(router, config) {
   const { to, url, replace } = config;
-  debugger
   //判断使用哪种方法跳转
   if (to && router) {
     const promise = router[replace ? "replace" : "push"](to);
