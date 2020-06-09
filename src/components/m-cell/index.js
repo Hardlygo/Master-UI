@@ -27,7 +27,7 @@ export default {
     },
     isLink: Boolean,
     url: String,
-    to: [Object,String],
+    to: [Object, String],
     clickable: Boolean,
     border: Boolean,
     icon: String,
@@ -69,7 +69,10 @@ export default {
       const slots = this.$slots;
       if (slots["icon"]) {
         return (
-          <div {...{ class: ["m-cell_lefticon", this.iconClass] }} style={this.iconStyle}>
+          <div
+            {...{ class: ["m-cell_lefticon", this.iconClass] }}
+            style={this.iconStyle}
+          >
             {slots["icon"]}
           </div>
         );
@@ -80,7 +83,6 @@ export default {
             name={this.icon}
             class={["m-cell_lefticon", this.iconClass]}
             style={this.iconStyle}
-            size="16px"
           ></m-icon>
         );
       }
@@ -91,7 +93,10 @@ export default {
 
       if (showDescription) {
         return (
-          <div class={["m-cell_label_description", this.descriptionClass]} style={this.descriptionStyle}>
+          <div
+            class={["m-cell_label_description", this.descriptionClass]}
+            style={this.descriptionStyle}
+          >
             {slots["description"] ? slots["description"] : this.description}
           </div>
         );
@@ -101,7 +106,10 @@ export default {
       const slots = this.$slots;
       if (this.label || slots["label"]) {
         return (
-          <div {...{ class: ["m-cell_label",this.labelClass] }} style={this.labelStyle}>
+          <div
+            {...{ class: ["m-cell_label", this.labelClass] }}
+            style={this.labelStyle}
+          >
             {slots["label"] ? slots["label"] : this.label}
             {this.genDescription()}
           </div>
@@ -116,7 +124,11 @@ export default {
         return (
           <div
             {...{
-              class: ["m-cell_content", isAlone ? "m-cell_content--alone" : "",this.contentClass],
+              class: [
+                "m-cell_content",
+                isAlone ? "m-cell_content--alone" : "",
+                this.contentClass,
+              ],
             }}
             style={this.contentStyle}
           >
@@ -130,9 +142,8 @@ export default {
         return (
           <m-icon
             name={this.rightIconName}
-            class={["m-cell_righticon",this.arrowClass]}
+            class={["m-cell_righticon", this.arrowClass]}
             style={this.arrowStyle}
-            size="16px"
           ></m-icon>
         );
       }

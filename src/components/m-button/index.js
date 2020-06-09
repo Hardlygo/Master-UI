@@ -50,6 +50,11 @@ export default {
         this.$emit("click", e);
         functionalRoute(this);
       }
+    },onTochStart(e){
+      const { loading, disabled } = this;
+      if (!loading && !disabled) {
+        this.$emit("tochStart", e);
+      }
     },
     /**
      * @description
@@ -106,7 +111,10 @@ export default {
         $slots,
         $attrs,
         $listeners,
+        nativeType,
+        disabled,
         onClick,
+        onTochStart,
         genClasses,
         genContent,
       } = this;
@@ -114,9 +122,12 @@ export default {
         class: [genClasses()],
         attrs: {
           ...$attrs,
+          type:nativeType,
+          disabled
         },
         on: {
           click: onClick,
+          tochStart:onTochStart,
           ...$listeners,
         },
       };
