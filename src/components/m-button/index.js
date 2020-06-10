@@ -12,6 +12,13 @@ export default {
     text: String,
     loading: Boolean,
     disabled: Boolean,
+    block:Boolean,
+    round:Boolean,
+    square:Boolean,
+    color: String,
+    icon: String,
+    //是否为朴素按钮
+    plain: Boolean,
     //按钮的几个类型
     type: {
       type: String,
@@ -33,10 +40,7 @@ export default {
       },
       default: "normal",
     },
-    color: String,
-    icon: String,
-    //是否为朴素按钮
-    plain: Boolean,
+
     tag: {
       type: String,
       default: "button",
@@ -70,7 +74,7 @@ export default {
       if (loading) {
       } else if (icon) {
         content.push(
-          <m-icon name={this.icon} class={["m-button_icon"]}></m-icon>
+          <m-icon name={this.icon} class={[bem("icon")]}></m-icon>
         );
       }
       let btnText;

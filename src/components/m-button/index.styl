@@ -15,6 +15,7 @@
     transition opacity $animation-duration-fast
     // 去除coursor:pointer，因为在移动端该效果无效,反而点击背景会变蓝色
     -webkit-tap-highlight-color rgba(255, 255, 255, 0)
+    // 铺盖整个button，初始状态opacity
     &::before
         position absolute
         top 50%
@@ -31,10 +32,89 @@
     &:focus
         // 去除获得焦点边框变黄
         outline none
+    &--loading, &--disabled
+        &::before
+            display none
+    //type类型对应类
     &--default
         color $button-default-color
         background-color $button-default-background-color
         border $button-border-width solid $button-default-border-color
+    &--primary
+        color $button-primary-color
+        background-color $button-primary-background-color
+        border $button-border-width solid $button-primary-border-color
+    &--info
+        color $button-info-color
+        background-color $button-info-background-color
+        border $button-border-width solid $button-info-border-color
+    &--warning
+        color $button-warning-color
+        background-color $button-warning-background-color
+        border $button-border-width solid $button-warning-border-color
+    &--danger
+        color $button-danger-color
+        background-color $button-danger-background-color
+        border $button-border-width solid $button-danger-border-color
+    //size对应类    
     &--normal
         padding 0 15px
         font-size $button-normal-font-size
+    &--large
+        width 100%
+        height $button-large-height
+    &--mini
+        min-width $button-mini-min-width
+        height $button-mini-height
+        font-size $button-mini-font-size
+        // 相同的.m-button--mini紧邻就使用这个样式
+        & + .m-button--mini
+            margin-left $padding-base
+    &--small
+        min-width $button-small-min-width
+        height: $button-small-height
+        padding: 0 $padding-xs
+        font-size: $button-small-font-size
+    
+    &--block
+        width: 100%
+        display: block
+    
+    &--disabled
+        cursor: not-allowed
+        opacity $button-disabled-opacity
+    &--loading
+        cursor: default
+    &--round
+        border-radius: $button-round-border-radius
+    &--square
+        border-radius: 0
+    
+    &--plain
+        //plain模式就是将背景设置为白，字体与border颜色一样
+        background-color: $button-plain-background-color
+        &.m-button--primary
+            //这里会覆盖掉原来primary的color
+            color: $button-primary-background-color;
+        &.m-button--info
+            color: $button-info-background-color
+        &.m-button--warning
+            color: $button-warning-background-color
+         &.m-button--danger
+            color: $button-danger-background-color
+    
+    &_content
+        display: flex
+        align-items: center
+        justify-content: center
+        height 100%
+    &_icon
+        min-width 1em
+        font-size: 1.2em
+        line-height: inherit
+    
+    &_icon+&_text
+    &_loading+&_text
+        margin-left: 5px
+    
+
