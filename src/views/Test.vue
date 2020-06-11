@@ -75,7 +75,14 @@
       size="26px"
     />
     {{myVal}}
-    <m-button plain icon="https://b.yzcdn.cn/vant/icon-demo-1126.png" square block type="danger" size="large" text="点我点我"></m-button>
+    <div style="pading:0 10px">
+
+      <m-button
+        icon="https://b.yzcdn.cn/vant/icon-demo-1126.png"
+        block
+        text="点我点我"
+      ></m-button>
+    </div>
   </div>
 </template>
 <script>

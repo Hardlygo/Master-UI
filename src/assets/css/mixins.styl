@@ -1,0 +1,14 @@
+.m-hairline--surround::after
+    border-width 1px !important
+[class*='m-hairline']::after
+        position absolute
+        box-sizing border-box
+        content ' '
+        pointer-events none
+        top -50%
+        right -50%
+        bottom -50%
+        left -50%
+        border 0 solid #ebedf0
+        -webkit-transform scale(0.5)
+        transform scale(0.5)

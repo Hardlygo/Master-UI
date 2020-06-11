@@ -116,5 +116,17 @@
     &_icon+&_text
     &_loading+&_text
         margin-left: 5px
+
+    &--hairline
+        border-width: 0
+        &::after
+            border-color: inherit
+            border-radius: $button-border-radius*2
+        &.m-button--round::after
+            border-radius: $button-round-border-radius
+        &.m-button--square::after
+            border-radius: 0
+
+    
     
 

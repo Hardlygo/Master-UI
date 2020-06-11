@@ -12,10 +12,12 @@ export default {
     text: String,
     loading: Boolean,
     disabled: Boolean,
-    block:Boolean,
-    round:Boolean,
-    square:Boolean,
+    block: Boolean,
+    round: Boolean,
+    square: Boolean,
+    hairline: Boolean,
     color: String,
+    noBorder: Boolean, //是否不显示边框
     icon: String,
     //是否为朴素按钮
     plain: Boolean,
@@ -54,7 +56,8 @@ export default {
         this.$emit("click", e);
         functionalRoute(this);
       }
-    },onTochStart(e){
+    },
+    onTochStart(e) {
       const { loading, disabled } = this;
       if (!loading && !disabled) {
         this.$emit("tochStart", e);
@@ -73,9 +76,7 @@ export default {
       const { $slots, loading, icon, text, loadingText } = this;
       if (loading) {
       } else if (icon) {
-        content.push(
-          <m-icon name={this.icon} class={[bem("icon")]}></m-icon>
-        );
+        content.push(<m-icon name={this.icon} class={[bem("icon")]}></m-icon>);
       }
       let btnText;
       //是loading的文字还是默认slot的还是props内的属性值
@@ -104,10 +105,41 @@ export default {
         block,
         round,
         square,
+        hairline,
       } = this;
       return [
-        bem([type, size, { plain, loading, disabled, block, round, square }]),
+        hairline ? "m-hairline--surround" : "",
+        bem([
+          type,
+          size,
+          { plain, loading, disabled, block, round, square, hairline },
+        ]),
       ];
+    },
+    genStyle() {
+      let mStyle = {};
+      let { plain, color, noBorder } = this;
+      if (color) {
+        //传color了分plain和plain&&noBorder同时存在情况
+        mStyle.color = plain ? color : "white";
+        if (plain) {
+          mStyle.borderColor = color;
+        }
+        //只有两者都满足才会使得border为0
+        if (plain && noBorder) {
+          mStyle.borderWidth = 0;
+        }
+
+        if (!plain) {
+          mStyle.background = color;
+        }
+      } else {
+        if (plain && noBorder) {
+          mStyle.borderWidth = 0;
+        }
+      }
+
+      return mStyle;
     },
     genButton() {
       const {
@@ -120,18 +152,20 @@ export default {
         onClick,
         onTochStart,
         genClasses,
+        genStyle,
         genContent,
       } = this;
       const btnProps = {
         class: [genClasses()],
+        style: { ...genStyle() },
         attrs: {
           ...$attrs,
-          type:nativeType,
-          disabled
+          type: nativeType,
+          disabled,
         },
         on: {
           click: onClick,
-          tochStart:onTochStart,
+          tochStart: onTochStart,
           ...$listeners,
         },
       };
