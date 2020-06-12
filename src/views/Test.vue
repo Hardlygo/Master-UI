@@ -84,6 +84,7 @@
         text="点我点我"
       ></m-button>
     </div>
+    <m-loading></m-loading>
   </div>
 </template>
 <script>
@@ -91,13 +92,14 @@ import MInput from "@/components/m-input";
 import MCellGroup from "@/components/m-cell-group";
 import MCell from "@/components/m-cell";
 import MButton from "@/components/m-button";
-
+import MLoading from "@/components/m-loading";
 export default {
   components: {
     MInput,
     MCellGroup,
     MCell,
-    MButton
+    MButton,
+    MLoading
   },
   data() {
     return {
