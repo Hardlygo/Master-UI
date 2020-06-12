@@ -1,14 +1,19 @@
 
 .m-loading
     position relative
-    &_circle
-        display block
-        animation m-circular 5s infinite
-        stroke currentColor
-        stroke-width 3
-        stroke-linecap round
-@keyframes m-circular
-    from
-        left 0px
-    to
-        left 200px
+    display inline-block
+    &--circle
+        animation spin $loading-spinner-animation-duration infinite linear
+    &--spinner
+        animation spin 1s infinite steps(12) // 使其进行8方位旋转
+/*
+ turn : 定义的动画名称
+ 1s : 动画时间
+ linear : 动画以何种运行轨迹完成一个周期
+ infinite :规定动画应该无限次播放
+*/
+@keyframes spin
+    0%
+        transform rotate(0deg)
+    100%
+        transform rotate(359deg)
