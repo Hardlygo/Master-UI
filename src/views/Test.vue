@@ -80,6 +80,7 @@
       <m-button
         icon="https://b.yzcdn.cn/vant/icon-demo-1126.png"
         block
+        color="linear-gradient(to right, #4bb0ff, #6149f6)"
         text="点我点我"
       ></m-button>
     </div>

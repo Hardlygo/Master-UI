@@ -124,14 +124,18 @@ export default {
         mStyle.color = plain ? color : "white";
         if (plain) {
           mStyle.borderColor = color;
+        } else {
+          mStyle.background = color;
         }
         //只有两者都满足才会使得border为0
         if (plain && noBorder) {
           mStyle.borderWidth = 0;
         }
-
-        if (!plain) {
-          mStyle.background = color;
+        // hide border when color is linear-gradient
+        if (color.indexOf("gradient") !== -1) {
+          mStyle.border = 0;
+        } else {
+          mStyle.borderColor = color;
         }
       } else {
         if (plain && noBorder) {
