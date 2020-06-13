@@ -84,7 +84,11 @@
         text="点我点我"
       ></m-button>
     </div>
-    <m-loading type="spinner" color="#4bb0ff"></m-loading>
+    <m-loading
+      type="line-spinner"
+      color="#4bb0ff"
+      vertical
+    ></m-loading>
   </div>
 </template>
 <script>
