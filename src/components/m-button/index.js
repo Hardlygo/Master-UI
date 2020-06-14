@@ -1,8 +1,10 @@
-import MIcon from "../m-icon";
 import "./index.styl";
+import MIcon from "../m-icon";
+import MLoading from "../m-loading";
 import { functionalRoute } from "../../utils/router";
 import { createNameSpace } from "../../utils/create";
 const { bem } = createNameSpace("button");
+const LOADINGTYPES = ["circle", "spinner", "line-spinner"];
 export default {
   name: "MButton",
   data() {
@@ -42,6 +44,19 @@ export default {
       },
       default: "normal",
     },
+    loadingText: String,
+    loadingType: {
+      type: String,
+      validator: function(value) {
+        // 这个值必须匹配下列字符串中的一个
+        return LOADINGTYPES.indexOf(value) !== -1;
+      },
+      default:"circle"
+    },
+    loadingSize: {
+      type: String,
+      default: "20px",
+    },
 
     tag: {
       type: String,
@@ -73,8 +88,27 @@ export default {
      */
     genContent() {
       let content = [];
-      const { $slots, loading, icon, text, loadingText } = this;
+      const {
+        $slots,
+        loading,
+        icon,
+        text,
+        loadingText,
+        loadingSize,
+        loadingType,
+      } = this;
       if (loading) {
+        // color直接读取父级div字体颜色  currentColor
+        let loadingColor = "currentColor";
+        if (loadingType === "line-spinner") loadingColor = this.color||"";//没有传color就是用loading默认的color
+        content.push(
+          <MLoading
+            class={bem("loading")}
+            type={loadingType}
+            size={loadingSize}
+            color={loadingColor}
+          />
+        );
       } else if (icon) {
         content.push(<m-icon name={this.icon} class={[bem("icon")]}></m-icon>);
       }
@@ -121,12 +155,13 @@ export default {
       let { plain, color, noBorder } = this;
       if (color) {
         //传color了分plain和plain&&noBorder同时存在情况
-        mStyle.color = plain ? color : "white";
+        mStyle.color = plain ? color : "white";//不支持将文字设置为渐变色
         if (plain) {
           mStyle.borderColor = color;
         } else {
           mStyle.background = color;
         }
+
         //只有两者都满足才会使得border为0
         if (plain && noBorder) {
           mStyle.borderWidth = 0;

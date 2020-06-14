@@ -3,6 +3,7 @@ import MIcon from "../m-icon";
 import { isNum } from "../../utils/func";
 import { createNameSpace } from "../../utils/create";
 const { bem } = createNameSpace("loading");
+const LOADINGTYPES=["circle", "spinner", "line-spinner"]
 export default {
   name: "MLoading",
   props: {
@@ -10,7 +11,7 @@ export default {
       type: String,
       validator: function(value) {
         // 这个值必须匹配下列字符串中的一个
-        return ["circle", "spinner", "line-spinner"].indexOf(value) !== -1;
+        return LOADINGTYPES.indexOf(value) !== -1;
       },
       default: "circle",
     },

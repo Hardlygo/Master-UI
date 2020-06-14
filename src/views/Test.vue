@@ -76,18 +76,23 @@
     />
     {{myVal}}
     <div style="pading:0 10px">
-
       <m-button
         icon="https://b.yzcdn.cn/vant/icon-demo-1126.png"
         block
         color="linear-gradient(to right, #4bb0ff, #6149f6)"
-        text="点我点我"
+        loading
+        loading-text="点我点我"
+        loading-type="line-spinner"
       ></m-button>
     </div>
     <m-loading
       type="line-spinner"
       color="#4bb0ff"
-      vertical
+    ></m-loading>
+    <m-loading
+      size="20px"
+      color="currentColor"
+      class="m-button_loading"
     ></m-loading>
   </div>
 </template>
