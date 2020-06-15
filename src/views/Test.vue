@@ -87,11 +87,13 @@
     </div>
     <m-loading
       type="line-spinner"
-      color="#4bb0ff"
+      size="28px"
     ></m-loading>
     <m-loading
-      size="20px"
+      size="28px"
+      type="spinner"
     ></m-loading>
+    <m-loading size="28px"></m-loading>
   </div>
 </template>
 <script>

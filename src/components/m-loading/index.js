@@ -3,7 +3,7 @@ import MIcon from "../m-icon";
 import { isNum } from "../../utils/func";
 import { createNameSpace } from "../../utils/create";
 const { bem } = createNameSpace("loading");
-const LOADINGTYPES=["circle", "spinner", "line-spinner"]
+const LOADINGTYPES = ["circle", "spinner", "line-spinner"];
 export default {
   name: "MLoading",
   props: {
@@ -21,7 +21,7 @@ export default {
     },
     size: {
       type: [String, Number],
-      default: "30",
+      default: "24",
     },
     textSize: {
       type: [String, Number],
@@ -71,11 +71,13 @@ export default {
       vertical,
     } = this;
     let style = {};
-    style.color = color;
+    //都是根据字体颜色和字体大小确定图标颜色和大小
+    style.color = color||"";
+    style.fontSize = computedSize||"";
     return (
-      <div class={[bem({vertical})]} style={style}>
+      <div class={[bem({ vertical })]}>
         <computedTag
-          color={color}
+          style={style}
           size={computedSize}
           name={computedName}
           class={bem("spinner", type)}

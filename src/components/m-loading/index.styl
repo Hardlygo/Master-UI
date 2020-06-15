@@ -2,8 +2,8 @@
 .m-loading
     position relative
     display inline-block
-    color $loading-line-spin-off-color // 底下的spinner颜色以此为准
-    font-size: $loading-line-spin-line-height
+    // color $loading-line-spin-off-color // 底下的spinner颜色以此为准
+    // font-size $loading-line-spin-line-height //底下元素以em为单位即以父元素的font-size为一个单位
     vertical-align middle
     &_spinner
         display inline-block
@@ -11,13 +11,15 @@
         &--circle
             animation spin $loading-spinner-animation-duration infinite linear
         &--spinner
-            animation spin 1s infinite steps(12) // 使其进行8方位旋转
+            animation spin $loading-circle-animation-duration infinite steps(12) // 使其进行8方位旋转
         &--line-spinner
             position relative
             width (1em / 4)
             height 1em
             margin 0 (1em / 2)
-            color inherit
+            // 二者不设置将会读取style内的color和font-size
+            // color $loading-line-spin-off-color // 底下的spinner颜色以此为准
+            // font-size $loading-line-spin-line-height //底下元素以em为单位即以父元素的font-size为一个单位
             background currentColor // 会根据color（字体颜色来设置）
             animation line-spin $loading-line-spin-duration infinite ($loading-line-spin-duration / 3) // 中间柱子延迟750/3毫秒
             &::before, &::after
@@ -45,7 +47,7 @@
         display flex
         flex-direction column
         align-items center
-        justify-content: center
+        justify-content center
         .m-loading_text
             margin $padding-xs 0 0
     /*
