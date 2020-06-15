@@ -91,8 +91,6 @@
     ></m-loading>
     <m-loading
       size="20px"
-      color="currentColor"
-      class="m-button_loading"
     ></m-loading>
   </div>
 </template>

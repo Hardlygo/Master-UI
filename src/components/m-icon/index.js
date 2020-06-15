@@ -53,6 +53,7 @@ export default {
       };
     },
     iconName() {
+      console.log(this.name)
       return `#icon-${this.name}`;
     },
     svgClass() {

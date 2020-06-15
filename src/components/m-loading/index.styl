@@ -3,6 +3,7 @@
     position relative
     display inline-block
     color $loading-line-spin-off-color // 底下的spinner颜色以此为准
+    font-size: $loading-line-spin-line-height
     vertical-align middle
     &_spinner
         display inline-block
@@ -13,9 +14,9 @@
             animation spin 1s infinite steps(12) // 使其进行8方位旋转
         &--line-spinner
             position relative
-            width ($loading-line-spin-line-height / 4)
-            height $loading-line-spin-line-height
-            margin 0 ($loading-line-spin-line-height / 2)
+            width (1em / 4)
+            height 1em
+            margin 0 (1em / 2)
             color inherit
             background currentColor // 会根据color（字体颜色来设置）
             animation line-spin $loading-line-spin-duration infinite ($loading-line-spin-duration / 3) // 中间柱子延迟750/3毫秒
@@ -23,16 +24,16 @@
                 content ' '
                 position absolute
                 display block
-                width ($loading-line-spin-line-height / 4)
-                height ($loading-line-spin-line-height / 1.5)
+                width (1em / 4)
+                height (1em / 1.5)
                 background currentColor // 会根据color（字体颜色来设置）
                 top 50%
                 transform translateY(-50%)
                 animation line-spin $loading-line-spin-duration infinite
             &::before
-                left -($loading-line-spin-line-height / 2)
+                left -(1em / 2)
             &::after
-                left ($loading-line-spin-line-height / 2)
+                left (1em / 2)
                 animation-delay ($loading-line-spin-duration / 1.5) // 最后柱子延迟750/1.5毫秒
     &_text
         display inline-block

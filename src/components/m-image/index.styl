@@ -1,0 +1,20 @@
+
+.m-image
+    position relative
+    display inline-block
+    &_img, &_loaidng, &_error
+        display block
+        width 100%
+        height 100%
+    &_loading, &_error
+        position absolute
+        left 50%
+        top 50%
+        transform translate(-50%, -50%)
+        color $image-placeholder-text-color
+        font-size $image-placehoder-font-size
+        background-color $image-placeholder-background-color
+    &_loading-icon
+        font-size $image-loading-icon-size
+    &_error-icon
+        font-size $image-error-icon-size

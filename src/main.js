@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-30 13:35:48
- * @LastEditTime: 2020-06-11 17:25:09
+ * @LastEditTime: 2020-06-15 15:27:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \blog_vuee:\JSWorkSpace\master-ui\src\main.js
@@ -14,7 +14,7 @@ import './icons'
 import 'reset-css'
 Vue.config.productionTip = false
 
-import './assets/css/mixins.styl'
+import './assets/css/common.styl'
 
 /* eslint-disable no-new */
 new Vue({
