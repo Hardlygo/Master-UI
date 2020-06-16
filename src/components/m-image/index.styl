@@ -7,6 +7,9 @@
         width 100%
         height 100%
     &_loading, &_error
+        //首先要沾满div
+        width 100%
+        height 100%
         position: absolute;
         top: 0;
         left: 0;
@@ -15,9 +18,14 @@
         align-items: center;
         justify-content: center;
         color $image-placeholder-text-color
-        font-size $image-placehoder-font-size
+        font-size $image-placeholder-font-size
         background-color $image-placeholder-background-color
     &_loading-icon
         font-size $image-loading-icon-size
     &_error-icon
         font-size $image-error-icon-size
+    &--round
+        overflow hidden
+        border-radius: 50%
+        img
+            border-radius: inherit

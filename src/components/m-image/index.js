@@ -1,5 +1,6 @@
 import "./index.styl";
 import MIcon from "../m-icon";
+import MLoading from "../m-loading";
 import { isNum } from "../../utils/func";
 import { createNameSpace } from "../../utils/create";
 const { bem } = createNameSpace("image");
@@ -68,6 +69,20 @@ export default {
       this.error = false;
     },
   },
+  created() {
+    const { $Lazyload } = this;
+    if ($Lazyload) {
+      $Lazyload.$on("loaded", this.onLazyLoaded);
+      $Lazyload.$on("error", this.onLazyLoadError);
+    }
+  },
+  beforeDestroy() {
+    const { $Lazyload } = this;
+    if ($Lazyload) {
+      $Lazyload.$off("loaded", this.onLazyLoaded);
+      $Lazyload.$off("error", this.onLazyLoadError);
+    }
+  },
   methods: {
     onLoad(e) {
       this.loading = false;
@@ -78,6 +93,18 @@ export default {
       this.error = true;
       this.$emit("error", e);
     },
+    //对懒加载加载中和加载出错做处理：开始
+    onLazyLoaded({ el }) {
+      if (el === this.$refs["image"] && this.loading) {
+        this.onLoad();
+      }
+    },
+    onLazyLoadError({ el }) {
+      if (el === this.$refs["image"] && !this.error) {
+        this.onError();
+      }
+    },
+    //对懒加载加载中和加载出错做处理：结束
     onClick(e) {
       this.$emit("click", e);
     },
@@ -90,16 +117,19 @@ export default {
       if (this.loading && this.showLoading) {
         return (
           <div class={bem("loading")}>
-            {$slots["loading"]||(
-            <m-icon name={loadingIcon} class={bem("loading-icon")}></m-icon>)}
+            {$slots["loading"] || (
+              // <m-icon name={loadingIcon} class={bem("loading-icon")}></m-icon>
+              <MLoading type="spinner"></MLoading>
+            )}
           </div>
         );
       }
       if (this.error && this.showError) {
         return (
           <div class={bem("error")}>
-            {$slots["error"]||(
-            <m-icon name={errorIcon} class={bem("error-icon")}></m-icon>)}
+            {$slots["error"] || (
+              <m-icon name={errorIcon} class={bem("error-icon")}></m-icon>
+            )}
           </div>
         );
       }
@@ -135,7 +165,11 @@ export default {
   },
   render() {
     return (
-      <div style={this.style} onClick={this.onClick} class={bem()}>
+      <div
+        class={bem({ round: this.rounded })}
+        style={this.style}
+        onClick={this.onClick}
+      >
         {this.genImg()}
         {this.genPlaceholder()}
       </div>

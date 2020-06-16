@@ -100,10 +100,14 @@
     ></m-loading>
     <m-image
       width="100"
+      rounded
       height="100"
       fit="cover"
-      src="https://img.yzcdn.cn/vant/cat.png"
-    />
+      lazy-load
+      src="https://img.yzcdn.cn/vant/cat.jpeg"
+    >
+      <!-- <template v-slot:error>加载失败</template> -->
+    </m-image>
 
   </div>
 </template>
