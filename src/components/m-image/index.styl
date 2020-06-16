@@ -2,15 +2,18 @@
 .m-image
     position relative
     display inline-block
-    &_img, &_loaidng, &_error
+    &_image, &_loaidng, &_error
         display block
         width 100%
         height 100%
     &_loading, &_error
-        position absolute
-        left 50%
-        top 50%
-        transform translate(-50%, -50%)
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         color $image-placeholder-text-color
         font-size $image-placehoder-font-size
         background-color $image-placeholder-background-color

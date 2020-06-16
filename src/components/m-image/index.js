@@ -1,6 +1,8 @@
 import "./index.styl";
 import MIcon from "../m-icon";
-import MLoading from "../m-loading";
+import { isNum } from "../../utils/func";
+import { createNameSpace } from "../../utils/create";
+const { bem } = createNameSpace("image");
 export default {
   name: "MImage",
   props: {
@@ -16,8 +18,8 @@ export default {
     width: {
       type: [String, Number],
     },
-    rounded:Boolean,//是否显示图片为圆形
-    radius:[String,Number],//图片圆角大小
+    rounded: Boolean, //是否显示图片为圆形
+    radius: [String, Number], //图片圆角大小
     lazyLoad: Boolean,
     showLoading: {
       type: Boolean,
@@ -36,9 +38,107 @@ export default {
       default: "img-broken",
     },
   },
-  methods:{
-      genImg(){
-          
+  data() {
+    return {
+      loading: true,
+      error: false,
+    };
+  },
+  computed: {
+    style() {
+      let sty = {};
+      if (this.width) {
+        sty.width = isNum(this.width) ? `${this.width}px` : this.width;
       }
-  }
+      if (this.height) {
+        sty.height = isNum(this.height) ? `${this.height}px` : this.height;
+      }
+      if (this.radius) {
+        style.overflow = "hidden";
+        style.borderRadius = isNum(this.radius)
+          ? `${this.radius}px`
+          : this.radius;
+      }
+      return sty;
+    },
+  },
+  watch: {
+    src() {
+      this.loading = true;
+      this.error = false;
+    },
+  },
+  methods: {
+    onLoad(e) {
+      this.loading = false;
+      this.$emit("load", e);
+    },
+    onError(e) {
+      this.loading = false;
+      this.error = true;
+      this.$emit("error", e);
+    },
+    onClick(e) {
+      this.$emit("click", e);
+    },
+    /**
+     * @description
+     * 生成加载提示或者加载失败提示
+     */
+    genPlaceholder() {
+      const { $slots, loadingIcon, errorIcon } = this;
+      if (this.loading && this.showLoading) {
+        return (
+          <div class={bem("loading")}>
+            {$slots["loading"]||(
+            <m-icon name={loadingIcon} class={bem("loading-icon")}></m-icon>)}
+          </div>
+        );
+      }
+      if (this.error && this.showError) {
+        return (
+          <div class={bem("error")}>
+            {$slots["error"]||(
+            <m-icon name={errorIcon} class={bem("error-icon")}></m-icon>)}
+          </div>
+        );
+      }
+    },
+    genImg() {
+      const { error, fit, src, alt, lazyLoad, onError, onLoad } = this;
+      const imgProps = {
+        class: bem("image"),
+        attrs: {
+          alt: alt,
+        },
+        style: {
+          /**contain	保持宽高缩放图片，使图片的长边能完全显示出来
+              cover	保持宽高缩放图片，使图片的短边能完全显示出来，裁剪长边
+              fill	拉伸图片，使图片填满元素
+              none	保持图片原有尺寸
+              scale-down	取none或contain中较小的一个*/
+          objectFit: fit,
+        },
+        on: {
+          error: onError,
+          load: onLoad,
+        },
+      };
+      if (error) {
+        return;
+      }
+      if (lazyLoad) {
+        return <img ref="image" vLazy={src} {...imgProps} />;
+      }
+      return <img src={src} {...imgProps}></img>;
+    },
+  },
+  render() {
+    return (
+      <div style={this.style} onClick={this.onClick} class={bem()}>
+        {this.genImg()}
+        {this.genPlaceholder()}
+      </div>
+    );
+  },
 };

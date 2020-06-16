@@ -98,6 +98,13 @@
       size="28px"
       color="skyblue"
     ></m-loading>
+    <m-image
+      width="100"
+      height="100"
+      fit="cover"
+      src="https://img.yzcdn.cn/vant/cat.png"
+    />
+
   </div>
 </template>
 <script>
@@ -106,13 +113,15 @@ import MCellGroup from "@/components/m-cell-group";
 import MCell from "@/components/m-cell";
 import MButton from "@/components/m-button";
 import MLoading from "@/components/m-loading";
+import MImage from "@/components/m-image";
 export default {
   components: {
     MInput,
     MCellGroup,
     MCell,
     MButton,
-    MLoading
+    MLoading,
+    MImage
   },
   data() {
     return {
