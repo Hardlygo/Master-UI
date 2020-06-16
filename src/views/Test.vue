@@ -77,9 +77,8 @@
     {{myVal}}
     <div style="pading:0 10px">
       <m-button
-        icon="https://b.yzcdn.cn/vant/icon-demo-1126.png"
+        color="#7232dd"
         block
-        color="linear-gradient(to right, #4bb0ff, #6149f6)"
         loading
         loading-text="点我点我"
         loading-type="line-spinner"
@@ -88,12 +87,17 @@
     <m-loading
       type="line-spinner"
       size="28px"
+      color="skyblue"
     ></m-loading>
     <m-loading
       size="28px"
       type="spinner"
+      color="skyblue"
     ></m-loading>
-    <m-loading size="28px"></m-loading>
+    <m-loading
+      size="28px"
+      color="skyblue"
+    ></m-loading>
   </div>
 </template>
 <script>

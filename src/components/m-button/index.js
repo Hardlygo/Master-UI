@@ -51,7 +51,7 @@ export default {
         // 这个值必须匹配下列字符串中的一个
         return LOADINGTYPES.indexOf(value) !== -1;
       },
-      default:"circle"
+      default: "circle",
     },
     loadingSize: {
       type: String,
@@ -91,6 +91,7 @@ export default {
       const {
         $slots,
         loading,
+        color,
         icon,
         text,
         loadingText,
@@ -100,7 +101,12 @@ export default {
       if (loading) {
         // color直接读取父级div字体颜色  currentColor
         let loadingColor = "currentColor";
-        if (loadingType === "line-spinner") loadingColor = this.color||"";//没有传color就是用loading默认的color
+        if (loadingType === "line-spinner") {
+          //对这个类型的color的做特殊判断
+          if (color && (color.indexOf("gradient") !== -1 || !this.plain))
+            loadingColor = "rgba(255,255,255,0.2)"; 
+          if (!color && !this.plain) loadingColor = "#c8c9cc";//没有传color就是用loading默认的color
+        }
         content.push(
           <MLoading
             class={bem("loading")}
@@ -155,7 +161,7 @@ export default {
       let { plain, color, noBorder } = this;
       if (color) {
         //传color了分plain和plain&&noBorder同时存在情况
-        mStyle.color = plain ? color : "white";//不支持将文字设置为渐变色
+        mStyle.color = plain ? color : "white"; //不支持将文字设置为渐变色
         if (plain) {
           mStyle.borderColor = color;
         } else {

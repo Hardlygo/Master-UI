@@ -17,6 +17,10 @@ export default {
     },
     color: {
       type: String,
+      validator: function(value) {
+        // 这个值传空会报错
+        return value!== "";
+      },
       default: "#c8c9cc",
     },
     size: {
