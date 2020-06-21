@@ -144,6 +144,26 @@
         style="background:#66c6f2;background-clip: content-box"
       >offset: 12, cols: 12</m-col>
     </m-row>
+    <!-- 左对齐 -->
+<m-row type="flex"> 
+  <m-col cols="6">cols: 6</m-col>
+  <m-col cols="6">cols: 6</m-col>
+  <m-col cols="6">cols: 6</m-col>
+</m-row>
+
+<!-- 居中 -->
+<m-row type="flex" justify="center">
+  <m-col cols="6">cols: 6</m-col>
+  <m-col cols="6">cols: 6</m-col>
+  <m-col cols="6">cols: 6</m-col>
+</m-row>
+
+<!-- 右对齐 -->
+<m-row type="flex" justify="end">
+  <m-col cols="6">cols: 6</m-col>
+  <m-col cols="6">cols: 6</m-col>
+  <m-col cols="6">cols: 6</m-col>
+</m-row>
 
   </div>
 </template>

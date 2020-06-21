@@ -16,7 +16,6 @@ export default {
   },
   computed: {
     style() {
-        console.log(this.$attrs)
       const { index } = this;
       const { space } = this.parent || {};
       if (space && space[index]) {

@@ -3,6 +3,7 @@
  */
 
 import Vue from "vue";
+import { sortChildren } from "../utils/vnodes";
 /**
  * @description
  * 在子组件中混入
@@ -56,7 +57,8 @@ export function ChildernMixin(parent, options = {}) {
           return;
         }
         const children = [...this.parent.children, this];
-
+        //对其按照vnode顺序排序
+        sortChildren(children,this.parent);
         this.parent.children = children;
       },
     },

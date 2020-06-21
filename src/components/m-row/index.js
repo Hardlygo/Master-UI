@@ -22,7 +22,6 @@ export default {
   computed: {
     //根据gutter来计算子组件的左右padding值
     space() {
-      console.log(this.children)
       const gutter = Number(this.gutter); //数字化gutter
       if (!gutter) {
         return;
