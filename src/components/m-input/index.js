@@ -10,7 +10,7 @@
 
 import "./index.styl"
 export default {
-    name: 'm-input',
+    name: 'MInput',
     data() {
         return {
             focused: false

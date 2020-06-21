@@ -1,23 +1,22 @@
 /*
  * @Author: your name
  * @Date: 2020-05-31 13:23:40
- * @LastEditTime: 2020-05-31 19:28:45
+ * @LastEditTime: 2020-06-21 21:04:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \blog_vuee:\JSWorkSpace\master-ui\src\components\m-cell-group\index.js
  */
-import "./index.styl"
+import "./index.styl";
 export default {
   name: "MCellGorup",
   props: {
     title: String,
     border: Boolean,
   },
-  methods: {},
   render(h) {
     const slots = this.$slots;
     const groupProps = {
-      class: ["m-cell-group", this. border ? "m-cell-group--border" : ""], //使用bem命名
+      class: ["m-cell-group", this.border ? "m-cell-group--border" : ""], //使用bem命名
       attrs: {
         ...this.$attrs,
       },

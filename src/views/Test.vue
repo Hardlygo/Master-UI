@@ -8,7 +8,10 @@
 --> 
 <template>
   <div>
-    <m-cell-group border>
+    <m-cell-group
+      border
+      title="我是头部"
+    >
       <m-input
         type="number"
         label="文本"
@@ -74,7 +77,6 @@
       name="https://b.yzcdn.cn/vant/icon-demo-1126.png"
       size="26px"
     />
-    {{myVal}}
     <div style="pading:0 10px">
       <m-button
         color="#7232dd"
@@ -109,6 +111,41 @@
       <!-- <template v-slot:error>加载失败</template> -->
     </m-image>
 
+    <m-row>
+      <m-col style="background:#39a9ed" cols="8">cols: 8</m-col>
+      <m-col style="background:#66c6f2" cols="8">cols: 8</m-col>
+      <m-col style="background:#39a9ed" cols="8">cols: 8</m-col>
+    </m-row>
+    <m-row>
+      <m-col cols="4" style="background:#39a9ed;background-clip: content-box">cols: 4</m-col>
+      <m-col
+        cols="10"
+        offset="4"
+        style="background:#66c6f2;background-clip: content-box"
+      >offset: 4, cols: 10</m-col>
+    </m-row>
+    <m-row gutter="20">
+      <m-col
+        cols="8"
+        style="background:#39a9ed;background-clip: content-box"
+      >cols: 8</m-col>
+      <m-col
+        cols="8"
+        style="background:#66c6f2;background-clip: content-box"
+      >cols: 8</m-col>
+      <m-col
+        cols="8"
+        style="background:#39a9ed;background-clip: content-box"
+      >cols: 8</m-col>
+    </m-row>
+    <m-row>
+      <m-col
+        offset="12"
+        cols="12"
+        style="background:#66c6f2;background-clip: content-box"
+      >offset: 12, cols: 12</m-col>
+    </m-row>
+
   </div>
 </template>
 <script>
@@ -118,6 +155,9 @@ import MCell from "@/components/m-cell";
 import MButton from "@/components/m-button";
 import MLoading from "@/components/m-loading";
 import MImage from "@/components/m-image";
+import MRow from "@/components/m-row";
+import MCol from "@/components/m-col";
+
 export default {
   components: {
     MInput,
@@ -125,7 +165,9 @@ export default {
     MCell,
     MButton,
     MLoading,
-    MImage
+    MImage,
+    MRow,
+    MCol
   },
   data() {
     return {

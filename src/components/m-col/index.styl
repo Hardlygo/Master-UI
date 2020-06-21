@@ -1,0 +1,11 @@
+genColClass(n, i = 1)
+    for j in i .. n
+        &--{j}
+            width (j * 100% / 24)
+        &--offset-{j}
+            margin-left (j * 100% / 24)
+.m-col
+    float left
+    min-height 1px
+    box-sizing border-box
+    genColClass(24)

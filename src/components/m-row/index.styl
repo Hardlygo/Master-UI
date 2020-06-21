@@ -1,0 +1,26 @@
+
+.m-row
+    // 清除浮动
+    &::before, &::after
+        display table // 换行，并使得行内每一列等高[测试block区别]:如果是block, .clearfix内容为空的话, .clearfix上方和下方的元素可以发生margin合并,
+        content ' '
+    &::after
+        clear both
+    &--flex
+        display flex
+        &::after, &::before
+            display none
+    &--justify-center
+        justify-content center
+    &--justify-end
+        justify-content flex-end
+    &--justify-space-around
+        justify-content space-around
+    &--justify-space-between
+        justify-content space-between
+    &--align-center
+        align-items center
+    &--align-bottom
+        align-items flex-end
+    &--align-top
+        align-items flex-start
