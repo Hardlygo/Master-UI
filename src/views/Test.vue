@@ -111,12 +111,24 @@
     </m-image>
 
     <m-row>
-      <m-col style="background:#39a9ed" cols="8">cols: 8</m-col>
-      <m-col style="background:#66c6f2" cols="8">cols: 8</m-col>
-      <m-col style="background:#39a9ed" cols="8">cols: 8</m-col>
+      <m-col
+        style="background:#39a9ed"
+        cols="8"
+      >cols: 8</m-col>
+      <m-col
+        style="background:#66c6f2"
+        cols="8"
+      >cols: 8</m-col>
+      <m-col
+        style="background:#39a9ed"
+        cols="8"
+      >cols: 8</m-col>
     </m-row>
     <m-row>
-      <m-col cols="4" style="background:#39a9ed;background-clip: content-box">cols: 4</m-col>
+      <m-col
+        cols="4"
+        style="background:#39a9ed;background-clip: content-box"
+      >cols: 4</m-col>
       <m-col
         cols="10"
         offset="4"
@@ -145,25 +157,37 @@
       >offset: 12, cols: 12</m-col>
     </m-row>
     <!-- 左对齐 -->
-<m-row type="flex"> 
-  <m-col cols="6">cols: 6</m-col>
-  <m-col cols="6">cols: 6</m-col>
-  <m-col cols="6">cols: 6</m-col>
-</m-row>
+    <m-row
+      type="flex"
+      gutter="20"
+    >
+      <m-col cols="6">cols: 6</m-col>
+      <m-col cols="6">cols: 6</m-col>
+      <m-col cols="6">cols: 6</m-col>
+      <m-col cols="6">cols: 6</m-col>
+      <m-col cols="12">cols:12</m-col>
+      <m-col cols="12">cols: 12</m-col>
+    </m-row>
 
-<!-- 居中 -->
-<m-row type="flex" justify="center">
-  <m-col cols="6">cols: 6</m-col>
-  <m-col cols="6">cols: 6</m-col>
-  <m-col cols="6">cols: 6</m-col>
-</m-row>
+    <!-- 居中 -->
+    <m-row
+      type="flex"
+      justify="center"
+    >
+      <m-col cols="6">cols: 6</m-col>
+      <m-col cols="6">cols: 6</m-col>
+      <m-col cols="6">cols: 6</m-col>
+    </m-row>
 
-<!-- 右对齐 -->
-<m-row type="flex" justify="end">
-  <m-col cols="6">cols: 6</m-col>
-  <m-col cols="6">cols: 6</m-col>
-  <m-col cols="6">cols: 6</m-col>
-</m-row>
+    <!-- 右对齐 -->
+    <m-row
+      type="flex"
+      justify="end"
+    >
+      <m-col cols="6">cols: 6</m-col>
+      <m-col cols="6">cols: 6</m-col>
+      <m-col cols="6">cols: 6</m-col>
+    </m-row>
 
   </div>
 </template>
