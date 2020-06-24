@@ -159,7 +159,7 @@
     <!-- 左对齐 -->
     <m-row
       type="flex"
-      gutter="20"
+      gutter="30"
     >
       <m-col cols="6">cols: 6</m-col>
       <m-col cols="6">cols: 6</m-col>
@@ -174,6 +174,7 @@
       type="flex"
       justify="center"
     >
+      <m-col cols="6">cols: 6</m-col>
       <m-col cols="6">cols: 6</m-col>
       <m-col cols="6">cols: 6</m-col>
       <m-col cols="6">cols: 6</m-col>
