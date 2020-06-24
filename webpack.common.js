@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-30 10:44:34
- * @LastEditTime: 2020-05-31 18:40:46
+ * @LastEditTime: 2020-06-24 15:01:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \blog_vuee:\JSWorkSpace\master-ui\webpack.common.js
@@ -103,7 +103,7 @@ module.exports = {
                     .filter(({ file }) => file.includes(type))
                     .map(({ content }) => content)
                     .join("");
-                return combineAll("variables") + source; //+ combineAll("mixins")
+                return combineAll("variables") + combineAll("animation")+ source; //+ combineAll("mixins")
               },
             },
           },

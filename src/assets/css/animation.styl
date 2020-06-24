@@ -1,0 +1,48 @@
+@keyframes m-slide-up-enter
+    from
+        transform translate3d(0, 100%, 0)
+@keyframes m-slide-up-leave
+    to
+        transform translate3d(0, 100%, 0)
+@keyframes m-slide-down-enter
+    from
+        transform translate3d(0, -100%, 0)
+@keyframes m-slide-down-leave
+    to
+        transform translate3d(0, -100%, 0)
+@keyframes m-slide-left-enter
+    from
+        transform translate3d(-100%, 0, 0)
+@keyframes m-slide-left-leave
+    to
+        transform translate3d(-100%, 0, 0)
+@keyframes m-slide-right-enter
+    from
+        transform translate3d(100%, 0, 0)
+@keyframes m-slide-right-leave
+    to
+        transform translate3d(100%, 0, 0)
+@keyframes m-fade-in
+    from
+        opacity 0
+    to
+        opacity 1
+@keyframes m-fade-out
+    from
+        opacity 1
+    to
+        opacity 0
+/*
+    turn : 定义的动画名称
+    1s : 动画时间
+    linear : 动画以何种运行轨迹完成一个周期
+    infinite :规定动画应该无限次播放
+*/
+@keyframes spin
+    0%
+        transform rotate(0deg)
+    100%
+        transform rotate(359deg)
+@keyframes line-spin
+    50%
+        background rgb(255, 255, 255)
