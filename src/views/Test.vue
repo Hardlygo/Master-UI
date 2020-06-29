@@ -81,9 +81,8 @@
       <m-button
         color="#7232dd"
         block
-        loading
-        loading-text="点我点我"
-        loading-type="line-spinner"
+        text="点我点我"
+        @click="show=!show"
       ></m-button>
     </div>
     <m-loading
@@ -190,6 +189,19 @@
       <m-col cols="6">cols: 6</m-col>
     </m-row>
 
+    <m-mask
+      :show="show"
+      @click="show = false"
+    >
+      <div
+        class="wrapper"
+        
+      >
+        <div class="block" @click.stop />
+      </div>
+
+    </m-mask>
+
   </div>
 </template>
 <script>
@@ -201,6 +213,7 @@ import MLoading from "@/components/m-loading";
 import MImage from "@/components/m-image";
 import MRow from "@/components/m-row";
 import MCol from "@/components/m-col";
+import MMask from "@/components/m-mask";
 
 export default {
   components: {
@@ -211,12 +224,29 @@ export default {
     MLoading,
     MImage,
     MRow,
-    MCol
+    MCol,
+    MMask
   },
   data() {
     return {
-      myVal: ""
+      myVal: "",
+      show: false
     };
   }
 };
 </script>
+<style>
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.block {
+  border-radius: 8px;
+  width: 120px;
+  height: 120px;
+  background-color: #fff;
+}
+</style>

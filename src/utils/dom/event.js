@@ -2,7 +2,7 @@ import { isServer } from "..";
 
 const isBrowser = !isServer;
 export let supportsPassive = false;
-//解释见https://segmentfault.com/a/1190000022744664（用来检测当前浏览器是否支持passive）
+//解释见https://segmentfault.com/a/1190000022744664（用来检测当前浏览器是否支持passive,支持的话将阻止默认事件发生使得滑动更顺畅）
 if (isBrowser) {
   try {
     const opts = {};

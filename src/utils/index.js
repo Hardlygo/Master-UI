@@ -1,5 +1,5 @@
 import Vue from "vue";
-export { createNamespace } from "./create";
+export { createNameSpace } from "./create";
 export const isServer = Vue.prototype.$isServer;
 
 export function isDef(val) {
