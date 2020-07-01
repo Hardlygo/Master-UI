@@ -9,7 +9,7 @@ let stackItem = {
   mask: null,
   config: null,
 };
-
+//context里面的stack保存了多个stackItem
 let context = {
   zIndex: 2000,
   lockCount: 0,
@@ -25,7 +25,7 @@ const defaultMaskCfg = {
 };
 
 function mountMask(vm) {
-  return mount(mask, {
+  return mount(Mask, {
     on: {
       click() {
         vm.$emit("click-mask");
@@ -52,6 +52,29 @@ export function openMask(vm, config) {
   updateMask(vm);
 }
 
-export function updateMask(vm){
-    
+export function updateMask(vm) {
+  const item = context.find(vm);
+  if (item) {
+    const el = vm.$el;
+    const { config, mask } = item;
+    if (el && el.parentNode) {
+      //mask应当和对应的vm在同一层
+      el.parentNode.insertBefore(mask.$el, el);
+    }
+    Object.assign(mask, defaultMaskCfg, config, { show: true });
+  }
+}
+
+export function closeMask(vm) {
+  const item = context.find(vm);
+  if (item) {
+    item.mask.show = false;
+  }
+}
+
+export function removeMask() {
+  const item = context.find(vm);
+  if (item) {
+    removeNode(item.mask.$el);
+  }
 }

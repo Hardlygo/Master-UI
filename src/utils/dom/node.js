@@ -1,6 +1,6 @@
-export function removeNode(node) {
-  const parent = node.parentNode;
+export function removeNode(el) {
+  const parent = el.parentNode;
   if (parent) {
-    parent.removeChild(node);
+    parent.removeChild(el);
   }
 }
