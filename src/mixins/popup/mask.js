@@ -4,20 +4,7 @@ import { mount } from "../../utils/functional";
 
 import { removeNode } from "../../utils/dom/node";
 
-let stackItem = {
-  vm: null,
-  mask: null,
-  config: null,
-};
-//context里面的stack保存了多个stackItem
-let context = {
-  zIndex: 2000,
-  lockCount: 0,
-  stack: [],
-  find(vm) {
-    return this.stack.find((item) => item.vm === vm);
-  },
-};
+import { context } from "./context";
 
 const defaultMaskCfg = {
   className: "",

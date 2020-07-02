@@ -1,0 +1,49 @@
+.m-dialog
+    position fixed
+    top 45%
+    left 50%
+    transform translate(-50%, -50%)
+    width $dialog-width
+    overflow hidden
+    font-size $dialog-font-size
+    background-color $dialog-background-color
+    border-radius $dialog-border-radius
+    backface-visibility hidden // 避免缩放动画后出现模糊的文本
+    transition-duration $dialog-transition
+    transition-property transform, opacity
+    transition-timing-function ease
+    @media (max-width 321px)
+        width @dialog-small-screen-width
+    &_header
+        padding-top $dialog-header-padding-top
+        font-weight $dialog-header-font-weight
+        line-height $dialog-header-line-height
+        text-align center
+        &--isolated
+            padding $dialog-header-isolated-padding
+    &_content
+        max-height $dialog-content-max-height
+        padding $dialog-content-padding
+        overflow-y auto
+        font-size $dialog-content-font-size
+        line-height $dialog_content-line-height
+        // 允许使用换行符
+        white-space pre-wrap
+        text-align center
+        word-wrap break-word
+        -webkit-overflow-scrolling touch
+        &--has-title
+            padding-top $dialog-has-title-content-padding-top
+            color $dialog-has-title-content-text-color
+        &--left
+            text-align left
+        &--right
+            text-align right
+    &_footer
+        overflow hidden
+        user-select none
+        &--buttons
+            display flex
+            .m-button
+                flex 1
+                
