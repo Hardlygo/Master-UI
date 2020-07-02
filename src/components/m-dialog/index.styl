@@ -26,7 +26,7 @@
         padding $dialog-content-padding
         overflow-y auto
         font-size $dialog-content-font-size
-        line-height $dialog_content-line-height
+        line-height $dialog-content-line-height
         // 允许使用换行符
         white-space pre-wrap
         text-align center
@@ -46,4 +46,14 @@
             display flex
             .m-button
                 flex 1
-                
+    .m-button
+        border 0
+    &_confirm
+        &, &:active
+            color $dialog-confirm-button-text-color
+    &-bounce-enter
+        transform translate(-50%, -50%) scale(0.7)
+        opacity 0
+    &-bounce-leave-active
+        transform translate(-50%, -50%) scale(0.7)
+        opacity 0

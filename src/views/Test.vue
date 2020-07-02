@@ -189,7 +189,7 @@
       <m-col cols="6">cols: 6</m-col>
     </m-row>
 
-    <m-mask
+    <!-- <m-mask
       :show="show"
       @click="show = false"
     >
@@ -200,7 +200,16 @@
         <div class="block" @click.stop />
       </div>
 
-    </m-mask>
+    </m-mask> -->
+
+    <m-dialog
+      v-model="show"
+      title="多花点时间就好了"
+      content="学习是一辈子的事情，请你坚持住！！"
+      show-cancel-button
+    >
+      <!-- <img style="width:100%" src="https://img.yzcdn.cn/vant/apple-3.jpg" /> -->
+    </m-dialog>
 
   </div>
 </template>
@@ -214,6 +223,7 @@ import MImage from "@/components/m-image";
 import MRow from "@/components/m-row";
 import MCol from "@/components/m-col";
 import MMask from "@/components/m-mask";
+import MDialog from "@/components/m-dialog";
 
 export default {
   components: {
@@ -225,7 +235,8 @@ export default {
     MImage,
     MRow,
     MCol,
-    MMask
+    MMask,
+    MDialog
   },
   data() {
     return {

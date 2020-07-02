@@ -22,7 +22,6 @@ export const CloseOnPopstateMixin = {
   },
   methods: {
     handlePopstate(bind) {
-      /* istanbul ignore if */
       if (this.$isServer) {
         return;
       }

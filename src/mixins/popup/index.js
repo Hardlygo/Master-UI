@@ -80,7 +80,7 @@ export function PopupMixin(option = {}) {
           context.zIndex = this.zIndex;
         }
         this.opened = true;
-        this.renderOverlay();
+        this.renderMask();
         this.addLock();
       },
       addLock() {

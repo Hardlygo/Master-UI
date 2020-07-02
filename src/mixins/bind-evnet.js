@@ -19,20 +19,28 @@ export function BindEventMixin(handler) {
     if (!vm.binded) {
       //转为vm.handler(on,true)
       handler.call(vm, on, true);
-      this.binded = true;
+      vm.binded = true;
     }
   }
 
   function unbind(vm) {
     if (vm.binded) {
-      handler.call(vm.off, false);
+      handler.call(vm, off, false);
       vm.binded = false;
     }
   }
   return {
-    mounted: bind,
-    activated: bind,
-    deactivated: unbind,
-    beforeDestroy: unbind,
+    mounted() {
+      bind(this);
+    },
+    activated() {
+      bind(this);
+    },
+    deactivated() {
+      unbind(this);
+    },
+    beforeDestroy() {
+      unbind(this);
+    },
   };
 }
