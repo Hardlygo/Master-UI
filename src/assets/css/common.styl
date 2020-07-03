@@ -12,6 +12,14 @@
     border 0 solid #ebedf0
     -webkit-transform scale(0.5)
     transform scale(0.5)
+.m-hairline--top::after
+    border-top-width 1px
+.m-hairline--bottom::after
+    border-bottom-width 1px
+.m-hairline--left::after
+    border-left-width 1px
+.m-hairline--right::after
+    border-right-width 1px
 // 项目用到的动画类
 .m-fade
     &-enter-active
@@ -38,7 +46,5 @@
         animation m-slide-right-enter $animation-duration-base $animation-timing-function-enter both
     &-leave-active
         animation m-slide-right-leave $animation-duration-base $animation-timing-function-leave both
-
-
 .m-overflow-hidden
     overflow hidden !important

@@ -121,7 +121,7 @@ export default {
     genFooterBtns() {
       const showTwoBtns = this.showCancleBtn && this.showConfirmBtn;
       return (
-        <div class={[bem("footer", { buttons: multiple })]}>
+        <div class={["m-hairline--top", bem("footer", { buttons: showTwoBtns })]}>
           {this.showCancleBtn && (
             <Button
               size="large"
@@ -141,6 +141,7 @@ export default {
             <Button
               size="large"
               class={[
+                showTwoBtns?"m-hairline--left":"",
                 bem("confirm"),
                 this.confirmBtnclass ? this.confirmBtnclass : "",
               ]}
