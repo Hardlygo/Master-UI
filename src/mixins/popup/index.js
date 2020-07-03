@@ -88,7 +88,7 @@ export function PopupMixin(option = {}) {
           on(document, "touchstart", this.touchStart);
           on(document, "touchmove", this.onTouchMove);
           if (!context.lockCount) {
-            document.body.classList.add("van-overflow-hidden");
+            document.body.classList.add("m-overflow-hidden");
           }
           context.lockCount++;
         }
@@ -100,7 +100,7 @@ export function PopupMixin(option = {}) {
           off(document, "touchmove", this.onTouchMove);
 
           if (!context.lockCount) {
-            document.body.classList.remove("van-overflow-hidden");
+            document.body.classList.remove("m-overflow-hidden");
           }
         }
       },
@@ -121,6 +121,9 @@ export function PopupMixin(option = {}) {
         /**
          * scrollHeight=滚动元素的高度
          * offsetHeight=包括padding、border、水平滚动条，但不包括margin的元素的高度
+         * offsetHeight =  border-top-width + padding-top + height + padding-bottom + border-bottom-width
+         * 如果存在水平滚动条，offsetHeight也包括水平滚动条的高度
+         * offsetTop 包含滚动高度
          * scrollTop=滑动距离顶部的距离
          */
         const { scrollHeight, offsetHeight, scrollTop } = el;
