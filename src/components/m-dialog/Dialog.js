@@ -3,7 +3,6 @@ import "./index.styl";
 import Button from "../m-button";
 import { PopupMixin } from "../../mixins/popup";
 import { createNameSpace } from "../../utils";
-import { multiple } from "webpack-merge";
 const { bem } = createNameSpace("dialog");
 function isNum(val) {
   const param = `${val}`;
@@ -24,7 +23,7 @@ export default {
       type: Boolean,
       default: true,
     },
-    showCancleBtn: {
+    showCancelBtn: {
       type: Boolean,
       default: true,
     },
@@ -32,7 +31,7 @@ export default {
       type: Boolean,
       default: true,
     },
-    cancleBtnText: {
+    cancelBtnText: {
       type: String,
       default: "取消",
     },
@@ -119,10 +118,12 @@ export default {
       this.$emit("closed");
     },
     genFooterBtns() {
-      const showTwoBtns = this.showCancleBtn && this.showConfirmBtn;
+      const showTwoBtns = this.showCancelBtn && this.showConfirmBtn;
       return (
-        <div class={["m-hairline--top", bem("footer", { buttons: showTwoBtns })]}>
-          {this.showCancleBtn && (
+        <div
+          class={["m-hairline--top", bem("footer", { buttons: showTwoBtns })]}
+        >
+          {this.showCancelBtn && (
             <Button
               size="large"
               class={[
@@ -130,7 +131,7 @@ export default {
                 this.cancleBtnClass ? this.cancleBtnClass : "",
               ]}
               loading={this.loading.cancel}
-              text={this.cancleBtnText}
+              text={this.cancelBtnText}
               style={{ color: this.cancleBtnColor }}
               onClick={() => {
                 this.handleAction("cancle");
@@ -141,7 +142,7 @@ export default {
             <Button
               size="large"
               class={[
-                showTwoBtns?"m-hairline--left":"",
+                showTwoBtns ? "m-hairline--left" : "",
                 bem("confirm"),
                 this.confirmBtnclass ? this.confirmBtnclass : "",
               ]}

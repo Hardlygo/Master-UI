@@ -206,11 +206,19 @@
       v-model="show"
       title="多花点时间就好了"
       content="学习是一辈子的事情，请你坚持住！！"
-      show-cancel-button
+      show-cancel-btn
     >
       <!-- <img style="width:100%" src="https://img.yzcdn.cn/vant/apple-3.jpg" /> -->
     </m-dialog>
 
+    <div style="pading:0 10px">
+      <m-button
+        color="lightblue"
+        block
+        text="弹窗"
+        @click="showDialog"
+      ></m-button>
+    </div>
   </div>
 </template>
 <script>
@@ -236,13 +244,25 @@ export default {
     MRow,
     MCol,
     MMask,
-    MDialog
+    [MDialog.Component.name]: MDialog.Component
   },
   data() {
     return {
       myVal: "",
       show: false
     };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.showDialog();
+    }, 0);
+  },
+  methods: {
+    showDialog() {
+      this.$dialog.confirm({
+        content: "弹窗内容"
+      });
+    }
   }
 };
 </script>

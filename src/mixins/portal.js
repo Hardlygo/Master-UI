@@ -1,5 +1,5 @@
 import Vue from "vue";
-
+//把目标（dialog/popup）放到指定的容器中
 /**
  * type PortalMixinOptions = {
   ref?: string;
@@ -18,7 +18,7 @@ function getElement(selector) {
   return null;
 }
 
-export function PortalMixin(ref, afterPortal) {
+export function PortalMixin({ref, afterPortal}) {
   return Vue.extend({
     props: {
       getContainer: [String, Function],
@@ -34,7 +34,7 @@ export function PortalMixin(ref, afterPortal) {
     methods: {
       portal() {
         const { getContainer } = this;
-        const el = ref ? this.refs[ref] : this.$el;
+        const el = ref ? this.$refs[ref] : this.$el;
         //取得父元素
         let container;
         if (getContainer) {

@@ -136,7 +136,7 @@ export function PopupMixin(option = {}) {
           //scrollTop + clientHeight = scrollHeight这是滚动到底部（offsetHeight>=clientHeight因为有可能有border）
           status = "10";
         }
-        //这里的!(parseInt(status, 2)代表是没有滑动时， status === '11'代表在滑动中
+        //这里的!(parseInt(status, 2)(2是二进制)代表是没有滑动时， status === '11'代表在滑动中
         if (
           status !== "11" &&
           this.direction === "vertical" &&
