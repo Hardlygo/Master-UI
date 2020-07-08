@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-05 17:26:04
- * @LastEditTime: 2020-07-09 00:42:52
+ * @LastEditTime: 2020-07-09 01:04:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \rx-guilind:\workspace\pzy\Master-UI\src\views\Hello.vue
@@ -18,6 +18,7 @@ export default {
     this.$dialog.confirm({
       content: "弹窗内容"
     });
+    //pushstate仅仅是从url上进行了改变，不会校验url的内容，页面不会改变
     window.history.pushState(null, null, "#");
     window.addEventListener("popstate", this.popstate, false);
   },
