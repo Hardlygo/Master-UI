@@ -3,11 +3,14 @@
         overflow hidden !important
     &-popup
         position fixed
+        box-sizing border-box
         max-height 100%
+        padding $popup-close-icon-padding
         overflow-y auto
         background-color $popup-background-color
         transition $popup-transition
         -webkit-overflow-scrolling touch
+        word-wrap break-word
         &--center
             top 50%
             left 50%
@@ -18,6 +21,7 @@
             top 0
             left 0
             width 100%
+            overflow hidden
             &.m-popup--round
                 border-radius 0 0 $popup-round-border-radius $popup-round-border-radius
         &--right
@@ -60,6 +64,9 @@
             color $popup-close-icon-color
             font-size $popup-close-icon-size
             cursor pointer
+            &:focus
+                // 去除获得焦点边框变黄
+                outline none
             &:active
                 color $popup-close-icon-active-color
             &--top-left

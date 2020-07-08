@@ -1,5 +1,6 @@
 import "./index.styl";
 
+import MIcon from "../m-icon";
 import { PopupMixin } from "../../mixins/popup";
 import { createNameSpace, isDef } from "../../utils";
 const { bem } = createNameSpace("popup");
@@ -16,7 +17,7 @@ export default {
     },
     closeable: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     closeIcon: {
       type: String,
@@ -59,7 +60,8 @@ export default {
     const { round, position } = this;
     const isCenter = position === "center";
     const transitionName =
-      this.transitionName || (isCenter ? "m-fade" : `m-popup-slide-${position}`);
+      this.transitionName ||
+      (isCenter ? "m-fade" : `m-popup-slide-${position}`);
     const style = {};
     if (isDef(this.duration)) {
       const key = isCenter ? "animationDuration" : "transitionDuration";
@@ -85,6 +87,19 @@ export default {
           onClick={this.onClick}
         >
           {this.$slots.default}
+          {this.closeable && (
+            <m-icon
+              onClick={this.close}
+              role="button"
+              tabindex="0"
+              name={this.closeIcon}
+              class={[
+                bem("close-icon", {
+                  [this.closeIconPosition]: this.closeIconPosition,
+                }),
+              ]}
+            ></m-icon>
+          )}
         </div>
       </transition>
     );

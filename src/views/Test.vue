@@ -265,23 +265,29 @@
       v-model="showPopupTop"
       position="top"
       :style="{ height: '30%' }"
-    />
+    >
+    Stick to doing somethingsaddddddddddddddddddddddddddddddeeeeeeeeeeeeeeeeee</m-popup>
     <m-popup
       v-model="showPopupBottom"
       position="bottom"
+      round
+      closeable
       :style="{ height: '30%' }"
-    />
+    >Stick to doing something</m-popup>
     <m-popup
       v-model="showPopupLeft"
       position="left"
       :style="{ width: '30%', height: '100%' }"
-    />
+    >Stick to doing something</m-popup>
     <m-popup
       v-model="showPopupRight"
       position="right"
       :style="{ width: '30%', height: '100%' }"
-    />
-    <m-popup :style="{ padding: '30px 50px' }" v-model="showPopupCenter"></m-popup>
+    >Stick to doing something</m-popup>
+    <m-popup
+      :style="{ padding: '30px 50px' }"
+      v-model="showPopupCenter"
+    >Stick to doing something</m-popup>
   </div>
 </template>
 <script>
