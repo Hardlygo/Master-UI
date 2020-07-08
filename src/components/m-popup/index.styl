@@ -10,6 +10,7 @@
         background-color $popup-background-color
         transition $popup-transition
         -webkit-overflow-scrolling touch
+        word-break break-all
         word-wrap break-word
         &--center
             top 50%
@@ -34,6 +35,7 @@
             bottom 0
             left 0
             width 100%
+            padding-top: 32px !important
             &.m-popup--round
                 border-radius $popup-round-border-radius $popup-round-border-radius 0 0
         &--left

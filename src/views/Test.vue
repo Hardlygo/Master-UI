@@ -273,7 +273,7 @@
       round
       closeable
       :style="{ height: '30%' }"
-    >Stick to doing something</m-popup>
+    >Stick to doing something88888888888888888888888888888888888888</m-popup>
     <m-popup
       v-model="showPopupLeft"
       position="left"
