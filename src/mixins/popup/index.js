@@ -56,6 +56,7 @@ export function PopupMixin(option = {}) {
     },
     computed: {
       shouldRender() {
+        //会一直等到inited为true才会渲染，否则先渲染
         return this.inited || !this.lazyRender;
       },
     },

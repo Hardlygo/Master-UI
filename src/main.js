@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-30 13:35:48
- * @LastEditTime: 2020-06-30 17:36:07
+ * @LastEditTime: 2020-07-08 16:57:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \blog_vuee:\JSWorkSpace\master-ui\src\main.js
@@ -14,7 +14,7 @@ import './icons'
 import 'reset-css'
 Vue.config.productionTip = false
 
-import { Dialog } from 'vant';
+// import { Dialog } from 'vant';
 
 import './assets/css/common.styl'
 

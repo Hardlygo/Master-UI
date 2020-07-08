@@ -36,7 +36,7 @@ export default {
       preventDefault(e, true);
     },
     onClick(e) {
-      console.log(2);
+      
       this.$emit("click", e);
     },
   },

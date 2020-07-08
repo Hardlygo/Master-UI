@@ -18,7 +18,7 @@ function getElement(selector) {
   return null;
 }
 
-export function PortalMixin({ref, afterPortal}) {
+export function PortalMixin({ ref, afterPortal }) {
   return Vue.extend({
     props: {
       getContainer: [String, Function],
