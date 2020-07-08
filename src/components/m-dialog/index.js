@@ -83,7 +83,7 @@ Dialog.confirm = (options) =>
   Dialog({
     showCancelBtn: true,
     confirmBtnText: "确定",
-    cancelBtnText:"取消",
+    cancelBtnText: "取消",
     ...options,
   });
 
@@ -91,6 +91,10 @@ Dialog.close = () => {
   if (instance) {
     instance.value = false;
   }
+};
+
+Dialog.isVisible = () => {
+  return instance ? instance.value : false;
 };
 
 Dialog.setOptions = (options) => {
