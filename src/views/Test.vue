@@ -223,7 +223,7 @@
 
     <div style="padding:10px">
       <m-button
-        color="#d62f"
+        color="DeepSkyBlue"
         block
         text="showPopupCenter"
         @click="showPopupCenter=!showPopupCenter"
@@ -231,7 +231,7 @@
     </div>
     <div style="padding:10px">
       <m-button
-        color="#d62f"
+        color="DeepSkyBlue"
         block
         text="showPopupTop"
         @click="showPopupTop=!showPopupTop"
@@ -239,7 +239,7 @@
     </div>
     <div style="padding:10px">
       <m-button
-        color="#d62f"
+        color="DeepSkyBlue"
         block
         text="showPopupRight"
         @click="showPopupRight=!showPopupRight"
@@ -247,7 +247,7 @@
     </div>
     <div style="padding:10px">
       <m-button
-        color="#d62f"
+        color="DeepSkyBlue"
         block
         text="showPopupBottom"
         @click="showPopupBottom=!showPopupBottom"
@@ -255,7 +255,7 @@
     </div>
     <div style="padding:10px">
       <m-button
-        color="#d62f"
+        color="DeepSkyBlue"
         block
         text="showPopupLeft"
         @click="showPopupLeft=!showPopupLeft"
@@ -272,6 +272,7 @@
       position="bottom"
       round
       closeable
+      :close-on-click-mask="false"
       :style="{ height: '30%' }"
     >Stick to doing something88888888888888888888888888888888888888</m-popup>
     <m-popup
