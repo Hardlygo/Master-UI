@@ -36,6 +36,19 @@ function Dialog(options) {
     if (!instance || !isInDocument(instance.$el)) {
       initInstance();
     }
+
+    instance.$on("open", () => {
+        options&&options.onDialogOpen&&options.onDialogOpen();
+    });
+    instance.$on("opened", () => {
+        options&&options.onDialogOpened&&options.onDialogOpened();
+    });
+    instance.$on("close", () => {
+        options&&options.onDialogClose&&options.onDialogClose();
+    });
+    instance.$on("closed", () => {
+        options&&options.onDialogClosed&&options.onDialogClosed();
+    });
     //callback指定resolve或reject的时机
     Object.assign(instance, Dialog.currentOptions, options, {
       resolve,

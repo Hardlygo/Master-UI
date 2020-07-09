@@ -50,8 +50,8 @@ export default {
     const createEmitter = (eventNamt) => (event) =>
       this.$emit(eventNamt, event);
     this.onClick = createEmitter("click");
-    this.onOpened = createEmitter("open");
-    this.onClosed = createEmitter("close");
+    this.onOpened = createEmitter("opened");
+    this.onClosed = createEmitter("closed");
   },
   render() {
     if (!this.shouldRender) {
