@@ -21,7 +21,7 @@ export default {
     },
     closeIcon: {
       type: String,
-      default: "shanchu",
+      default: "close",
     },
     position: {
       type: String,

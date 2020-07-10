@@ -95,10 +95,7 @@
       type="spinner"
       color="skyblue"
     ></m-loading>
-    <m-loading
-      size="28px"
-      color="skyblue"
-    ></m-loading>
+    <m-loading color="skyblue"></m-loading>
     <m-image
       width="100"
       height="100"
@@ -266,7 +263,7 @@
       position="top"
       :style="{ height: '30%' }"
     >
-    Stick to doing somethingsaddddddddddddddddddddddddddddddeeeeeeeeeeeeeeeeee</m-popup>
+      Stick to doing somethingsaddddddddddddddddddddddddddddddeeeeeeeeeeeeeeeeee</m-popup>
     <m-popup
       v-model="showPopupBottom"
       position="bottom"
@@ -289,6 +286,20 @@
       :style="{ padding: '30px 50px' }"
       v-model="showPopupCenter"
     >Stick to doing something</m-popup>
+    <m-toast
+      v-model="showToast"
+      type="loading"
+      loading-type="circle"
+      text="数据加载中..."
+    ></m-toast>
+    <div style="padding:10px">
+      <m-button
+        color="DeepSkyBlue"
+        block
+        text="showToast"
+        @click="showToast=!showToast"
+      ></m-button>
+    </div>
   </div>
 </template>
 <script>
@@ -303,6 +314,7 @@ import MCol from "@/components/m-col";
 import MMask from "@/components/m-mask";
 import MDialog from "@/components/m-dialog";
 import MPopup from "@/components/m-popup";
+import MToast from "@/components/m-toast";
 
 export default {
   components: {
@@ -316,7 +328,8 @@ export default {
     MCol,
     MMask,
     [MDialog.Component.name]: MDialog.Component,
-    MPopup
+    MPopup,
+    MToast
   },
   data() {
     return {
@@ -326,7 +339,8 @@ export default {
       showPopupTop: false,
       showPopupRight: false,
       showPopupBottom: false,
-      showPopupLeft: false
+      showPopupLeft: false,
+      showToast: false
     };
   },
   mounted() {

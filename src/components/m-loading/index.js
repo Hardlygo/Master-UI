@@ -17,15 +17,15 @@ export default {
     },
     color: {
       type: String,
-      validator: function(value) {
-        // 这个值传空会报错
-        return value!== "";
-      },
-      default: "#c8c9cc",
+      // validator: function(value) {
+      //   // 这个值传空会报错
+      //   return value !== "";
+      // },
+      default: "#c8c9cc", //
     },
     size: {
       type: [String, Number],
-      default: "24",
+      default: "30", //24
     },
     textSize: {
       type: [String, Number],
@@ -76,8 +76,8 @@ export default {
     } = this;
     let style = {};
     //都是根据字体颜色和字体大小确定图标颜色和大小
-    style.color = color||"";
-    style.fontSize = computedSize||"";
+    style.color = color || "";
+    style.fontSize = computedSize || "";
     return (
       <div class={[bem({ vertical })]}>
         <computedTag

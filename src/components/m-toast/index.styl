@@ -7,11 +7,11 @@
     flex-direction column
     align-items center
     justify-content center
-    box-sizing border-box
-    // hack for avoid max-width when use left & fixed
-    width $toast-default-width
+    box-sizing content-box
     // max-width优先权比width高
     max-width $toast-max-width
+    // hack for avoid max-width when use left & fixed
+    width $toast-default-width
     min-height $toast-default-min-height
     padding $toast-default-padding
     color $toast-text-color
@@ -43,8 +43,9 @@
         bottom $toast-position-bottom-distance
     &_icon
         font-size $toast-icon-size
+        color $toast-loading-icon-color !important
     &_loading
         padding $padding-base
-        color $toast-loading-icon-color
+        color $toast-loading-icon-color !important
     &_text
         margin-top $padding-xs
