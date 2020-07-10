@@ -44,8 +44,11 @@ export default {
       type: String,
       default: "m-fade",
     },
-    //animation时长
-    duration: Number,
+    //提示持续时长
+    timeout: {
+      type:[String,Number],
+      default:3000
+    },
     mask: {
       type: Boolean,
       default: false,
@@ -58,6 +61,11 @@ export default {
     onToastOpened: Function,
     onToastClosed: Function,
     className: String,
+  },
+  data() {
+    return {
+      activeTimeout: -1,
+    };
   },
   beforeCreate() {
     const createEmitter = (eventNamt) => (event) =>
@@ -74,7 +82,24 @@ export default {
       this.onToastClosed && this.onToastClosed();
     });
   },
+  mounted() {
+    if (this.value) this.setTimeout();
+  },
+  watch: {
+    value: "setTimeout",
+    timeout: "setTimeout",
+  },
   methods: {
+    setTimeout() {
+      window.clearTimeout(this.activeTimeout);
+      const timeout = Number(this.timeout);
+      if (!this.value || [0, -1].includes(timeout)) {
+        return;
+      }
+      this.activeTimeout = window.setTimeout(() => {
+        this.close()
+      }, timeout);
+    },
     /**
      * @description
      * 先看有没有iconslot有直接用iconslot这样可以方便应用其他的图标
@@ -111,7 +136,11 @@ export default {
   },
   render() {
     return (
-      <transition name={this.transitionName}>
+      <transition
+        name={this.transitionName}
+        onAfterEnter={this.onOpened}
+        onAfterLeave={this.onClosed}
+      >
         <div
           vShow={this.value}
           class={[
