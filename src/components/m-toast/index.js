@@ -1,5 +1,6 @@
 import Vue from "vue";
 import { isDef, isObject, isServer } from "../../utils";
+import { removeNode } from "../../utils/dom/node";
 
 import MToast from "./Toast";
 
@@ -69,15 +70,21 @@ export function Toast(options = {}) {
     ...defaultOptionsMap[options.type || currentOpts.type],
     ...options,
   };
-  options.tearDownIntance = () => {
-    _toast.$on("closed", () => {
-      if (multiple && !isServer) {
+  options.destroy = () => {
+    //用来移除multiple类的元素
+    if (multiple && !isServer) {
+      _toast.$on("closed", () => {
         queue = queue.filter((item) => item !== _toast);
-
+        //移除元素
         removeNode(_toast.$el);
         _toast.$destroy();
-      }
-    });
+      });
+    }
+  };
+  options.tearDown = () => {
+    //马上关闭后移除元素
+    _toast.value = false;
+    options.destroy();
   };
 
   Object.assign(_toast, options);
@@ -92,17 +99,17 @@ const createMethod = (type) => (options) =>
   Toast[method] = createMethod(method);
 });
 
-Toast.clear = (all) => {
+Toast.destroy = (all) => {
   if (queue.length) {
     if (all) {
       queue.forEach((toast) => {
-        toast.clear();
+        toast.tearDown();
       });
       queue = [];
     } else if (!multiple) {
-      queue[0].clear();
+      queue[0].tearDown();
     } else {
-      queue.shift().clear();
+      queue.shift().tearDown();
     }
   }
 };

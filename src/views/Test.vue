@@ -301,12 +301,29 @@
       ></m-button>
     </div>
 
-     <div style="padding:10px">
+    <div style="padding:10px">
       <m-button
         color="DeepSkyBlue"
         block
         text="methodToast"
         @click="methodToast"
+      ></m-button>
+    </div>
+
+    <div style="padding:10px">
+      <m-button
+        color="DeepSkyBlue"
+        block
+        text="twoToast"
+        @click="twoToast"
+      ></m-button>
+    </div>
+     <div style="padding:10px">
+      <m-button
+        color="DeepSkyBlue"
+        block
+        text="dynamicToast"
+        @click="dynamicToast"
       ></m-button>
     </div>
   </div>
@@ -324,7 +341,7 @@ import MMask from "@/components/m-mask";
 import MDialog from "@/components/m-dialog";
 import MPopup from "@/components/m-popup";
 import MToast from "@/components/m-toast";
-
+import { Toast } from "@/components/m-toast";
 export default {
   components: {
     MInput,
@@ -363,8 +380,38 @@ export default {
         content: "弹窗内容"
       });
     },
-    methodToast(){
-      this.$toast.loading("数据加载中...");
+    methodToast() {
+      this.$toast.loading({
+        loadingType: "line-spinner",
+        text: "数据加载中..."
+      });
+    },
+    twoToast() {
+      Toast.allowMultiple();
+
+      const toast1 = Toast("第一个 Toast");
+      const toast2 = Toast.success("第二个 Toast");
+      toast1.destroy();
+      toast2.destroy();
+    },
+    dynamicToast() {
+      const toast = Toast.loading({
+        timeout: 0, // 持续展示 toast
+        forbidClick: true,
+        text: "倒计时 3 秒"
+      });
+
+      let second = 3;
+      const timer = setInterval(() => {
+        second--;
+        if (second) {
+          toast.text = `倒计时 ${second} 秒`;
+        } else {
+          clearInterval(timer);
+          // 手动清除 Toast
+          Toast.destroy();
+        }
+      }, 1000);
     }
   }
 };

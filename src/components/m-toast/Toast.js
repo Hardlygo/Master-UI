@@ -89,8 +89,9 @@ export default {
     });
   },
   mounted() {
+    //可以先提前执行，先进行判断
+    this.setClickable();
     if (this.value) {
-      this.setClickable();
       this.setTimeout();
     }
   },
@@ -99,14 +100,14 @@ export default {
   },
   watch: {
     value: ["setTimeout", "setClickable"],
+    forbidClick: "setClickable",
     timeout: "setTimeout",
   },
   methods: {
     setClickable() {
+      //延迟接收结果
       const clickable = this.value && this.forbidClick;
-      
-      
-      
+
       if (clickable !== this.clickable) {
         this.clickable = clickable;
         lockClick(clickable);
@@ -115,12 +116,15 @@ export default {
     setTimeout() {
       window.clearTimeout(this.activeTimeout);
       const timeout = Number(this.timeout);
-      if (!this.value || [0, -1].includes(timeout)) {
+      if (!this.value) {
         return;
       }
-      this.activeTimeout = window.setTimeout(() => {
-        this.close();
-      }, timeout);
+      if (timeout > 0) {
+        this.activeTimeout = window.setTimeout(() => {
+          //设置value为false
+          this.close();
+        }, timeout);
+      }
     },
     /**
      * @description
