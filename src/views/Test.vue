@@ -300,6 +300,15 @@
         @click="showToast=!showToast"
       ></m-button>
     </div>
+
+     <div style="padding:10px">
+      <m-button
+        color="DeepSkyBlue"
+        block
+        text="methodToast"
+        @click="methodToast"
+      ></m-button>
+    </div>
   </div>
 </template>
 <script>
@@ -327,7 +336,7 @@ export default {
     MRow,
     MCol,
     MMask,
-    [MDialog.Component.name]: MDialog.Component,
+    MDialog,
     MPopup,
     MToast
   },
@@ -353,6 +362,9 @@ export default {
       this.$dialog.confirm({
         content: "弹窗内容"
       });
+    },
+    methodToast(){
+      this.$toast.loading("数据加载中...");
     }
   }
 };

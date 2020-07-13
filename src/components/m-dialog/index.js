@@ -27,7 +27,7 @@ function initInstance() {
   });
 }
 
-function Dialog(options) {
+export function Dialog(options) {
   if (isServer) {
     return Promise.resolve();
   }
@@ -126,4 +126,4 @@ Vue.prototype.$dialog = Dialog;
 Dialog.install = (vue) => {
   vue.component(MDialog.name, MDialog);
 };
-export default Dialog;
+export default MDialog;

@@ -3,6 +3,7 @@ import "./index.styl";
 import MIcon from "../m-icon";
 import MLoading from "../m-loading";
 import { PopupMixin } from "../../mixins/popup";
+import { lockClick } from "./lock-click";
 import { createNameSpace, isDef } from "../../utils";
 const { bem } = createNameSpace("toast");
 const LOADINGTYPES = ["circle", "spinner", "line-spinner"];
@@ -46,8 +47,8 @@ export default {
     },
     //提示持续时长
     timeout: {
-      type:[String,Number],
-      default:3000
+      type: [String, Number],
+      default: 3000,
     },
     mask: {
       type: Boolean,
@@ -57,6 +58,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    forbidClick: {
+      type: Boolean,
+      default: true,
+    },
     text: String,
     onToastOpened: Function,
     onToastClosed: Function,
@@ -65,6 +70,7 @@ export default {
   data() {
     return {
       activeTimeout: -1,
+      clickable: false,
     };
   },
   beforeCreate() {
@@ -83,13 +89,29 @@ export default {
     });
   },
   mounted() {
-    if (this.value) this.setTimeout();
+    if (this.value) {
+      this.setClickable();
+      this.setTimeout();
+    }
+  },
+  destroyed() {
+    this.setClickable();
   },
   watch: {
-    value: "setTimeout",
+    value: ["setTimeout", "setClickable"],
     timeout: "setTimeout",
   },
   methods: {
+    setClickable() {
+      const clickable = this.value && this.forbidClick;
+      
+      
+      
+      if (clickable !== this.clickable) {
+        this.clickable = clickable;
+        lockClick(clickable);
+      }
+    },
     setTimeout() {
       window.clearTimeout(this.activeTimeout);
       const timeout = Number(this.timeout);
@@ -97,7 +119,7 @@ export default {
         return;
       }
       this.activeTimeout = window.setTimeout(() => {
-        this.close()
+        this.close();
       }, timeout);
     },
     /**
