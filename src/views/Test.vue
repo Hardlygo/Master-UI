@@ -318,7 +318,7 @@
         @click="twoToast"
       ></m-button>
     </div>
-     <div style="padding:10px">
+    <div style="padding:10px">
       <m-button
         color="DeepSkyBlue"
         block
@@ -381,9 +381,8 @@ export default {
       });
     },
     methodToast() {
-      this.$toast.loading({
-        loadingType: "line-spinner",
-        text: "数据加载中..."
+      this.$toast.success({
+        text: "数据加载成功"
       });
     },
     twoToast() {
@@ -393,6 +392,8 @@ export default {
       const toast2 = Toast.success("第二个 Toast");
       toast1.destroy();
       toast2.destroy();
+      //尽量使得只是影响在方法，跳出方法应该恢复默认的allowMultiple即false
+      Toast.allowMultiple(false);
     },
     dynamicToast() {
       const toast = Toast.loading({
