@@ -20,3 +20,8 @@ export function isObject(val) {
 export function isPromise(val) {
   return isObject(val) && isFunction(val.then) && isFunction(val.catch);
 }
+
+export function isNum(val) {
+  const param = `${val}`;
+  return /^\d+(\.\d+)?$/.test(param);
+}
