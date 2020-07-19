@@ -61,15 +61,16 @@ export const ChecekboxRadioMixins = ({ parent, bem, role }) => ({
       return 0;
     },
     computedIconSize() {
+      let iconSize = this.iconSize || (this.parent && this.parent.iconSize);
       if (isDef(iconSize)) {
-        return isNum(this.iconSize) ? `${this.iconSize}px` : this.iconSize;
+        return isNum(iconSize) ? `${iconSize}px` : iconSize;
       }
     },
   },
   methods: {
     onClick(e) {
       const { target } = e;
-      const { icon } = this;
+      const { icon } = this.$refs;
       const iconClicked = icon === target || icon.contains(target);
 
       if (!this.isDisabled && (iconClicked || !this.labelClickDisabled)) {
@@ -87,7 +88,6 @@ export const ChecekboxRadioMixins = ({ parent, bem, role }) => ({
     },
     genIcon() {
       const { checked } = this;
-      const iconSize = this.iconSize || (this.parent && this.parent.iconSize);
       return (
         <div
           ref="icon"

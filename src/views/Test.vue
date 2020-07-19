@@ -326,6 +326,8 @@
         @click="dynamicToast"
       ></m-button>
     </div>
+
+     <m-radio >单选框 1</m-radio>
   </div>
 </template>
 <script>
@@ -342,6 +344,7 @@ import MDialog from "@/components/m-dialog";
 import MPopup from "@/components/m-popup";
 import MToast from "@/components/m-toast";
 import { Toast } from "@/components/m-toast";
+import MRadio from "@/components/m-radio"
 export default {
   components: {
     MInput,
@@ -355,7 +358,8 @@ export default {
     MMask,
     MDialog,
     MPopup,
-    MToast
+    MToast,
+    MRadio
   },
   data() {
     return {
