@@ -48,35 +48,40 @@
 
       </m-cell>
     </m-cell-group>
-    <m-icon
-      name="arrow-left"
-      size="26px"
-    />
-    <m-icon
-      name="arrow-right"
-      size="26px"
-      color="green"
-    />
-    <m-icon
-      name="arrow-up"
-      size="26px"
-      color="green"
-    />
-    <m-icon
-      name="arrow-down"
-      size="26px"
-      color="green"
-    />
-    <m-icon
-      name="prompt-fill"
-      size="26px"
-      color="green"
-    />
-    <m-icon
-      name="https://b.yzcdn.cn/vant/icon-demo-1126.png"
-      size="26px"
-    />
-    <div style="pading:0 10px">
+    <m-cell-group
+      border
+      title="icon"
+    >
+      <m-icon
+        name="arrow-left"
+        size="26px"
+      />
+      <m-icon
+        name="arrow-right"
+        size="26px"
+        color="green"
+      />
+      <m-icon
+        name="arrow-up"
+        size="26px"
+        color="green"
+      />
+      <m-icon
+        name="arrow-down"
+        size="26px"
+        color="green"
+      />
+      <m-icon
+        name="prompt-fill"
+        size="26px"
+        color="green"
+      />
+      <m-icon
+        name="https://b.yzcdn.cn/vant/icon-demo-1126.png"
+        size="26px"
+      />
+    </m-cell-group>
+    <div style="padding: 10px">
       <m-button
         color="#7232dd"
         block
@@ -84,106 +89,118 @@
         @click="show=!show"
       ></m-button>
     </div>
-    <m-loading
-      type="line-spinner"
-      size="28px"
-    ></m-loading>
-    <m-loading
-      size="28px"
-      type="spinner"
-      color="skyblue"
-    ></m-loading>
-    <m-loading></m-loading>
-    <m-image
-      width="100"
-      height="100"
-      fit="cover"
-      lazy-load
-      src="https://avatars3.githubusercontent.com/u/33127984?s=60&v=4"
+    <m-cell-group
+      border
+      title="loading"
     >
-      <!-- <template v-slot:error>加载失败</template> -->
-    </m-image>
-
-    <m-row>
-      <m-col
-        style="background:#39a9ed"
-        cols="8"
-      >cols: 8</m-col>
-      <m-col
-        style="background:#66c6f2"
-        cols="8"
-      >cols: 8</m-col>
-      <m-col
-        style="background:#39a9ed"
-        cols="8"
-      >cols: 8</m-col>
-    </m-row>
-    <m-row>
-      <m-col
-        cols="4"
-        style="background:#39a9ed;background-clip: content-box"
-      >cols: 4</m-col>
-      <m-col
-        cols="10"
-        offset="4"
-        style="background:#66c6f2;background-clip: content-box"
-      >offset: 4, cols: 10</m-col>
-    </m-row>
-    <m-row gutter="20">
-      <m-col
-        cols="8"
-        style="background:#39a9ed;background-clip: content-box"
-      >cols: 8</m-col>
-      <m-col
-        cols="8"
-        style="background:#66c6f2;background-clip: content-box"
-      >cols: 8</m-col>
-      <m-col
-        cols="8"
-        style="background:#39a9ed;background-clip: content-box"
-      >cols: 8</m-col>
-    </m-row>
-    <m-row>
-      <m-col
-        offset="12"
-        cols="12"
-        style="background:#66c6f2;background-clip: content-box"
-      >offset: 12, cols: 12</m-col>
-    </m-row>
-    <!-- 左对齐 -->
-    <m-row
-      type="flex"
-      gutter="30"
+      <m-loading
+        type="line-spinner"
+        size="28px"
+      ></m-loading>
+      <m-loading
+        size="28px"
+        type="spinner"
+        color="skyblue"
+      ></m-loading>
+      <m-loading></m-loading>
+    </m-cell-group>
+    <m-cell-group
+      border
+      title="image"
     >
-      <m-col cols="6">cols: 6</m-col>
-      <m-col cols="6">cols: 6</m-col>
-      <m-col cols="6">cols: 6</m-col>
-      <m-col cols="6">cols: 6</m-col>
-      <m-col cols="12">cols:12</m-col>
-      <m-col cols="12">cols: 12</m-col>
-    </m-row>
-
-    <!-- 居中 -->
-    <m-row
-      type="flex"
-      justify="center"
+      <m-image
+        width="100"
+        height="100"
+        fit="cover"
+        lazy-load
+        src="https://avatars3.githubusercontent.com/u/33127984?s=60&v=4"
+      />
+    </m-cell-group>
+    <!-- <template v-slot:error>加载失败</template> -->
+    <m-cell-group
+      border
+      title="layout(row|col)"
     >
-      <m-col cols="6">cols: 6</m-col>
-      <m-col cols="6">cols: 6</m-col>
-      <m-col cols="6">cols: 6</m-col>
-      <m-col cols="6">cols: 6</m-col>
-    </m-row>
+      <m-row>
+        <m-col
+          style="background:#39a9ed"
+          cols="8"
+        >cols: 8</m-col>
+        <m-col
+          style="background:#66c6f2"
+          cols="8"
+        >cols: 8</m-col>
+        <m-col
+          style="background:#39a9ed"
+          cols="8"
+        >cols: 8</m-col>
+      </m-row>
+      <m-row>
+        <m-col
+          cols="4"
+          style="background:#39a9ed;background-clip: content-box"
+        >cols: 4</m-col>
+        <m-col
+          cols="10"
+          offset="4"
+          style="background:#66c6f2;background-clip: content-box"
+        >offset: 4, cols: 10</m-col>
+      </m-row>
+      <m-row gutter="20">
+        <m-col
+          cols="8"
+          style="background:#39a9ed;background-clip: content-box"
+        >cols: 8</m-col>
+        <m-col
+          cols="8"
+          style="background:#66c6f2;background-clip: content-box"
+        >cols: 8</m-col>
+        <m-col
+          cols="8"
+          style="background:#39a9ed;background-clip: content-box"
+        >cols: 8</m-col>
+      </m-row>
+      <m-row>
+        <m-col
+          offset="12"
+          cols="12"
+          style="background:#66c6f2;background-clip: content-box"
+        >offset: 12, cols: 12</m-col>
+      </m-row>
+      <!-- 左对齐 -->
+      <m-row
+        type="flex"
+        gutter="30"
+      >
+        <m-col cols="6">cols: 6</m-col>
+        <m-col cols="6">cols: 6</m-col>
+        <m-col cols="6">cols: 6</m-col>
+        <m-col cols="6">cols: 6</m-col>
+        <m-col cols="12">cols:12</m-col>
+        <m-col cols="12">cols: 12</m-col>
+      </m-row>
 
-    <!-- 右对齐 -->
-    <m-row
-      type="flex"
-      justify="end"
-    >
-      <m-col cols="6">cols: 6</m-col>
-      <m-col cols="6">cols: 6</m-col>
-      <m-col cols="6">cols: 6</m-col>
-    </m-row>
+      <!-- 居中 -->
+      <m-row
+        type="flex"
+        justify="center"
+      >
+        <m-col cols="6">cols: 6</m-col>
+        <m-col cols="6">cols: 6</m-col>
+        <m-col cols="6">cols: 6</m-col>
+        <m-col cols="6">cols: 6</m-col>
+      </m-row>
 
+      <!-- 右对齐 -->
+      <m-row
+        type="flex"
+        justify="end"
+      >
+        <m-col cols="6">cols: 6</m-col>
+        <m-col cols="6">cols: 6</m-col>
+        <m-col cols="6">cols: 6</m-col>
+      </m-row>
+    </m-cell-group>
     <!-- <m-mask
       :show="show"
       @click="show = false"
@@ -196,146 +213,155 @@
       </div>
 
     </m-mask> -->
-
-    <m-dialog
-      v-model="show"
-      title="多花点时间就好了"
-      content="学习是一辈子的事情，请你坚持住！！"
-      show-cancel-btn
-      close-on-popstate
+    <m-cell-group
+      border
+      title="dialog|popup|toast"
     >
-      <!-- <img style="width:100%" src="https://img.yzcdn.cn/vant/apple-3.jpg" /> -->
-    </m-dialog>
+      <m-dialog
+        v-model="show"
+        title="多花点时间就好了"
+        content="学习是一辈子的事情，请你坚持住！！"
+        show-cancel-btn
+        close-on-popstate
+      >
+        <!-- <img style="width:100%" src="https://img.yzcdn.cn/vant/apple-3.jpg" /> -->
+      </m-dialog>
 
-    <div style="padding:0 10px">
-      <m-button
-        color="lightblue"
-        block
-        text="弹窗"
-        @click="showDialog"
-      ></m-button>
-    </div>
+      <div style="padding:0 10px">
+        <m-button
+          color="lightblue"
+          block
+          text="弹窗dialog"
+          @click="showDialog"
+        ></m-button>
+      </div>
 
-    <div style="padding:10px">
-      <m-button
-        color="DeepSkyBlue"
-        block
-        text="showPopupCenter"
-        @click="showPopupCenter=!showPopupCenter"
-      ></m-button>
-    </div>
-    <div style="padding:10px">
-      <m-button
-        color="DeepSkyBlue"
-        block
-        text="showPopupTop"
-        @click="showPopupTop=!showPopupTop"
-      ></m-button>
-    </div>
-    <div style="padding:10px">
-      <m-button
-        color="DeepSkyBlue"
-        block
-        text="showPopupRight"
-        @click="showPopupRight=!showPopupRight"
-      ></m-button>
-    </div>
-    <div style="padding:10px">
-      <m-button
-        color="DeepSkyBlue"
-        block
-        text="showPopupBottom"
-        @click="showPopupBottom=!showPopupBottom"
-      ></m-button>
-    </div>
-    <div style="padding:10px">
-      <m-button
-        color="DeepSkyBlue"
-        block
-        text="showPopupLeft"
-        @click="showPopupLeft=!showPopupLeft"
-      ></m-button>
-    </div>
-    <m-popup
-      v-model="showPopupTop"
-      position="top"
-      :style="{ height: '30%' }"
+      <div style="padding:10px">
+        <m-button
+          color="DeepSkyBlue"
+          block
+          text="showPopupCenter"
+          @click="showPopupCenter=!showPopupCenter"
+        ></m-button>
+      </div>
+      <div style="padding:10px">
+        <m-button
+          color="DeepSkyBlue"
+          block
+          text="showPopupTop"
+          @click="showPopupTop=!showPopupTop"
+        ></m-button>
+      </div>
+      <div style="padding:10px">
+        <m-button
+          color="DeepSkyBlue"
+          block
+          text="showPopupRight"
+          @click="showPopupRight=!showPopupRight"
+        ></m-button>
+      </div>
+      <div style="padding:10px">
+        <m-button
+          color="DeepSkyBlue"
+          block
+          text="showPopupBottom"
+          @click="showPopupBottom=!showPopupBottom"
+        ></m-button>
+      </div>
+      <div style="padding:10px">
+        <m-button
+          color="DeepSkyBlue"
+          block
+          text="showPopupLeft"
+          @click="showPopupLeft=!showPopupLeft"
+        ></m-button>
+      </div>
+      <m-popup
+        v-model="showPopupTop"
+        position="top"
+        :style="{ height: '30%' }"
+      >
+        Stick to doing somethingsaddddddddddddddddddddddddddddddeeeeeeeeeeeeeeeeee</m-popup>
+      <m-popup
+        v-model="showPopupBottom"
+        position="bottom"
+        round
+        closeable
+        :close-on-click-mask="false"
+        :style="{ height: '30%' }"
+      >Stick to doing something88888888888888888888888888888888888888</m-popup>
+      <m-popup
+        v-model="showPopupLeft"
+        position="left"
+        :style="{ width: '30%', height: '100%' }"
+      >Stick to doing something</m-popup>
+      <m-popup
+        v-model="showPopupRight"
+        position="right"
+        :style="{ width: '30%', height: '100%' }"
+      >Stick to doing something</m-popup>
+      <m-popup
+        :style="{ padding: '30px 50px' }"
+        v-model="showPopupCenter"
+      >Stick to doing something</m-popup>
+      <m-toast
+        v-model="showToast"
+        type="loading"
+        loading-type="circle"
+        text="数据加载中..."
+      ></m-toast>
+      <div style="padding:10px">
+        <m-button
+          color="DeepSkyBlue"
+          block
+          text="showToast"
+          @click="showToast=!showToast"
+        ></m-button>
+      </div>
+
+      <div style="padding:10px">
+        <m-button
+          color="DeepSkyBlue"
+          block
+          text="methodToast"
+          @click="methodToast"
+        ></m-button>
+      </div>
+
+      <div style="padding:10px">
+        <m-button
+          color="DeepSkyBlue"
+          block
+          text="twoToast"
+          @click="twoToast"
+        ></m-button>
+      </div>
+      <div style="padding:10px">
+        <m-button
+          color="DeepSkyBlue"
+          block
+          text="dynamicToast"
+          @click="dynamicToast"
+        ></m-button>
+      </div>
+    </m-cell-group>
+    <m-cell-group
+      border
+      title="radio"
     >
-      Stick to doing somethingsaddddddddddddddddddddddddddddddeeeeeeeeeeeeeeeeee</m-popup>
-    <m-popup
-      v-model="showPopupBottom"
-      position="bottom"
-      round
-      closeable
-      :close-on-click-mask="false"
-      :style="{ height: '30%' }"
-    >Stick to doing something88888888888888888888888888888888888888</m-popup>
-    <m-popup
-      v-model="showPopupLeft"
-      position="left"
-      :style="{ width: '30%', height: '100%' }"
-    >Stick to doing something</m-popup>
-    <m-popup
-      v-model="showPopupRight"
-      position="right"
-      :style="{ width: '30%', height: '100%' }"
-    >Stick to doing something</m-popup>
-    <m-popup
-      :style="{ padding: '30px 50px' }"
-      v-model="showPopupCenter"
-    >Stick to doing something</m-popup>
-    <m-toast
-      v-model="showToast"
-      type="loading"
-      loading-type="circle"
-      text="数据加载中..."
-    ></m-toast>
-    <div style="padding:10px">
-      <m-button
-        color="DeepSkyBlue"
-        block
-        text="showToast"
-        @click="showToast=!showToast"
-      ></m-button>
-    </div>
-
-    <div style="padding:10px">
-      <m-button
-        color="DeepSkyBlue"
-        block
-        text="methodToast"
-        @click="methodToast"
-      ></m-button>
-    </div>
-
-    <div style="padding:10px">
-      <m-button
-        color="DeepSkyBlue"
-        block
-        text="twoToast"
-        @click="twoToast"
-      ></m-button>
-    </div>
-    <div style="padding:10px">
-      <m-button
-        color="DeepSkyBlue"
-        block
-        text="dynamicToast"
-        @click="dynamicToast"
-      ></m-button>
-    </div>
-    <div style="padding:10px">
-      <m-radio
-        v-model="myval"
-        value="1"
-      >单选框 1</m-radio>
-      <m-radio
-        v-model="myval"
-        disabled
-        value="2"
-      >单选框 2</m-radio>
-    </div>
-    {{myval}}
+      <div style="padding:10px">
+        <m-radio
+          v-model="myval"
+          value="1"
+        >单选框 1</m-radio>
+        <m-radio
+          v-model="myval"
+          disabled
+          value="2"
+        >单选框 2</m-radio>
+      </div>
+      {{myval}}
+    </m-cell-group>
     <m-cell-group
       border
       title="radio-group"
@@ -361,6 +387,17 @@
         </m-radio-group>
       </div>
     </m-cell-group>
+    <m-cell-group
+      border
+      title="checkbox"
+    >
+      <div style="padding:10px">
+        <m-checkbox
+          icon-size="24px"
+        >复选框</m-checkbox>
+      </div>
+      {{isChecked}}
+    </m-cell-group>
   </div>
 </template>
 <script>
@@ -379,7 +416,7 @@ import MToast from "@/components/m-toast";
 import { Toast } from "@/components/m-toast";
 import MRadio from "@/components/m-radio";
 import MRadioGroup from "@/components/m-radio-group";
-
+import MCheckbox from "@/components/m-checkbox";
 export default {
   components: {
     MInput,
@@ -395,7 +432,8 @@ export default {
     MPopup,
     MToast,
     MRadio,
-    MRadioGroup
+    MRadioGroup,
+    MCheckbox
   },
   data() {
     return {
@@ -407,7 +445,8 @@ export default {
       showPopupBottom: false,
       showPopupLeft: false,
       showToast: false,
-      myval: ""
+      myval: "",
+      isChecked:false
     };
   },
   mounted() {

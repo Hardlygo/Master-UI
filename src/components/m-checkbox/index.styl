@@ -1,0 +1,56 @@
+
+.m-checkbox
+    display flex
+    align-items center
+    overflow hidden
+    cursor pointer
+    user-select none
+    &--diasbled
+        cursor not-allowed
+    &--label-disabled
+        cursor default
+    &--horizontal
+        margin-right $padding-sm
+    &_icon
+        flex none
+        font-size $checkbox-size
+        height 1em
+        line-height 1em
+        cursor pointer
+        // 有&的是和父元素同修饰一个标签，无&是修饰父标签的某个子元素标签
+        .m-icon
+            display block
+            box-sizing border-box
+            width 1.25em
+            height 1.25em
+            color transparent
+            font-size 0.8em
+            line-height 1.25
+            text-align center
+            border 1px solid $checkbox-border-color
+            transition-duration $checkbox-transition-duration
+            transition-property color, border-color, background-color
+        &--round
+            .m-icon
+                border-radius 100%
+        &--checked
+            .m-icon
+                color white
+                background-color $checkbox-checked-icon-color
+                border-color $checkbox-checked-icon-color
+        &--disabled
+            cursor not-allowed
+            .m-icon
+                background-color $checkbox-disabled-background-color
+                border-color $checkbox-disabled-icon-color
+        &--disabled&--checked
+            .m-icon
+                color $checkbox-disabled-icon-color
+    &_label
+        margin-left $checkbox-label-margin
+        color $checkbox-label-color
+        line-height $checkbox-size
+        &--left
+            margin 0 $checkbox-label-margin 0 0
+        &--disabled
+            color $checkbox-disabled-label-color
