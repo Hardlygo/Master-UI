@@ -39,7 +39,7 @@ export const ChecekboxRadioMixins = ({ parent, bem, role }) => ({
       const checkedColor =
         this.checkedColor || (this.parent && this.parent.checkedColor);
       if (checkedColor && this.checked && !this.isDisabled) {
-        //checked在哪里定义？
+        //checked在radio或checkbox内定义
         return {
           borderColor: checkedColor,
           backgroundColor: checkedColor,
@@ -47,10 +47,10 @@ export const ChecekboxRadioMixins = ({ parent, bem, role }) => ({
       }
     },
     tabindex() {
-      // 当一个元素设置tabindex属性值为-1的时候，元素会变得focusable，
+      // 当一个元素设置tabindex属性值为-1的时候，元素会变得focusable
       // 所谓focusable指的是元素可以被鼠标或者JS focus，在Chrome浏览器下表现为会有outline发光效果，IE浏览器下是虚框，同时能够响应focus事件。但是，却不能被键盘focus。
 
-      // <div>设置了tabindex="0"，从键盘访问的角度来讲，相对于<div>元素变成了<button>元素。
+      // <div>设置了tabindex="0"，从键盘访问的角度来讲，相对于<div>元素变成了<button>元素。 ，也就是能hightlight周围还有边框
       //因此，实际上，我们是可以使用<div>或者<span>元素模拟按钮的，但是千万不能忘记设置tabindex属性，如下示意：
       // <div class="button" tabindex="0" role="button">按钮</div>  既然要用DIV模拟按钮，就应该加这个，让用户无障碍访问
       //https://www.jb51.cc/bootstrap/234376.html

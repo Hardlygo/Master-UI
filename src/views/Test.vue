@@ -51,7 +51,6 @@
     <m-icon
       name="arrow-left"
       size="26px"
-      color="green"
     />
     <m-icon
       name="arrow-right"
@@ -88,14 +87,14 @@
     <m-loading
       type="line-spinner"
       size="28px"
-      color="skyblue"
+     
     ></m-loading>
     <m-loading
       size="28px"
       type="spinner"
       color="skyblue"
     ></m-loading>
-    <m-loading color="skyblue"></m-loading>
+    <m-loading ></m-loading>
     <m-image
       width="100"
       height="100"
@@ -326,8 +325,11 @@
         @click="dynamicToast"
       ></m-button>
     </div>
-
-     <m-radio >单选框 1</m-radio>
+    <div style="padding:10px">
+      <m-radio v-model="myval" value="1">单选框 1</m-radio>
+      <m-radio v-model="myval" disabled value="2">单选框 2</m-radio>
+    </div>
+    {{myval}}
   </div>
 </template>
 <script>
@@ -344,7 +346,7 @@ import MDialog from "@/components/m-dialog";
 import MPopup from "@/components/m-popup";
 import MToast from "@/components/m-toast";
 import { Toast } from "@/components/m-toast";
-import MRadio from "@/components/m-radio"
+import MRadio from "@/components/m-radio";
 export default {
   components: {
     MInput,
@@ -370,7 +372,8 @@ export default {
       showPopupRight: false,
       showPopupBottom: false,
       showPopupLeft: false,
-      showToast: false
+      showToast: false,
+      myval:""
     };
   },
   mounted() {
