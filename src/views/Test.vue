@@ -87,14 +87,13 @@
     <m-loading
       type="line-spinner"
       size="28px"
-     
     ></m-loading>
     <m-loading
       size="28px"
       type="spinner"
       color="skyblue"
     ></m-loading>
-    <m-loading ></m-loading>
+    <m-loading></m-loading>
     <m-image
       width="100"
       height="100"
@@ -326,10 +325,42 @@
       ></m-button>
     </div>
     <div style="padding:10px">
-      <m-radio v-model="myval" value="1">单选框 1</m-radio>
-      <m-radio v-model="myval" disabled value="2">单选框 2</m-radio>
+      <m-radio
+        v-model="myval"
+        value="1"
+      >单选框 1</m-radio>
+      <m-radio
+        v-model="myval"
+        disabled
+        value="2"
+      >单选框 2</m-radio>
     </div>
     {{myval}}
+    <m-cell-group
+      border
+      title="radio-group"
+    >
+      <div style="padding:10px">
+        <m-radio-group v-model="myval">
+          <m-radio value="1">单选框 1</m-radio>
+          <m-radio value="2">单选框 2</m-radio>
+        </m-radio-group>
+      </div>
+    </m-cell-group>
+    <m-cell-group
+      border
+      title="radio-group-row"
+    >
+      <div style="padding:10px">
+        <m-radio-group
+          direction="row"
+          v-model="myval"
+        >
+          <m-radio value="1">单选框 1</m-radio>
+          <m-radio value="2">单选框 2</m-radio>
+        </m-radio-group>
+      </div>
+    </m-cell-group>
   </div>
 </template>
 <script>
@@ -347,6 +378,8 @@ import MPopup from "@/components/m-popup";
 import MToast from "@/components/m-toast";
 import { Toast } from "@/components/m-toast";
 import MRadio from "@/components/m-radio";
+import MRadioGroup from "@/components/m-radio-group";
+
 export default {
   components: {
     MInput,
@@ -361,7 +394,8 @@ export default {
     MDialog,
     MPopup,
     MToast,
-    MRadio
+    MRadio,
+    MRadioGroup
   },
   data() {
     return {
@@ -373,7 +407,7 @@ export default {
       showPopupBottom: false,
       showPopupLeft: false,
       showToast: false,
-      myval:""
+      myval: ""
     };
   },
   mounted() {
