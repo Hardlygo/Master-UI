@@ -393,10 +393,38 @@
     >
       <div style="padding:10px">
         <m-checkbox
+          v-model="isChecked"
+          icon-size="24px"
+        >复选框</m-checkbox>
+        <m-checkbox
+          v-model="isChecked"
+          disabled
           icon-size="24px"
         >复选框</m-checkbox>
       </div>
       {{isChecked}}
+    </m-cell-group>
+    <m-cell-group
+      border
+      title="checkbox-group"
+    >
+      <div style="padding:10px">
+        <m-checkbox-group
+          v-model="result"
+          ref="checkboxGroup"
+          direction="row"
+        >
+          <m-checkbox
+            icon-size="24px"
+            value="打游戏"
+          >打游戏</m-checkbox>
+          <m-checkbox
+            value="打代码"
+            icon-size="24px"
+          >打代码</m-checkbox>
+        </m-checkbox-group>
+      {{result}}
+      </div>
     </m-cell-group>
   </div>
 </template>
@@ -417,6 +445,8 @@ import { Toast } from "@/components/m-toast";
 import MRadio from "@/components/m-radio";
 import MRadioGroup from "@/components/m-radio-group";
 import MCheckbox from "@/components/m-checkbox";
+import MCheckboxGroup from "@/components/m-checkbox-group";
+
 export default {
   components: {
     MInput,
@@ -433,7 +463,8 @@ export default {
     MToast,
     MRadio,
     MRadioGroup,
-    MCheckbox
+    MCheckbox,
+    MCheckboxGroup
   },
   data() {
     return {
@@ -446,7 +477,8 @@ export default {
       showPopupLeft: false,
       showToast: false,
       myval: "",
-      isChecked:false
+      isChecked: false,
+      result: ["打游戏"]
     };
   },
   mounted() {
