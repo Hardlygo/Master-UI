@@ -1,6 +1,7 @@
 {
   "name": "master-ui",
   "version": "1.0.0",
+  "homepage": "https://github.hardly.website/Master-UI/",
   "description": "A Vue mobile UI",
   "main": "index.js",
   "scripts": {
@@ -11,7 +12,7 @@
     "deploy":"gh-pages -d dist"
   },
   "keywords": ["vue","mobile UI"],
-  "author": "hardly",
+  "author": "Hardlygo",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.10.1",
