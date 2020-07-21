@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-30 10:45:05
- * @LastEditTime: 2020-07-21 21:52:24
+ * @LastEditTime: 2020-07-21 22:29:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \blog_vuee:\JSWorkSpace\master-ui\webpack.prod.js
@@ -13,7 +13,7 @@ const merge = require("webpack-merge");
 var webpack = require("webpack");
 const common = require("./webpack.common");
 
-const TerserPlugin = require('terser-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 var BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
@@ -27,5 +27,7 @@ module.exports = merge(common, {
       new OptimizeCSSAssetsPlugin({}),
     ],
   },
-  plugins: [new BundleAnalyzerPlugin()],
+  plugins: [
+    //   new BundleAnalyzerPlugin()//deploy时不允许使用这个插件
+  ],
 });
