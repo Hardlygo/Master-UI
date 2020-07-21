@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-30 10:44:34
- * @LastEditTime: 2020-06-24 15:01:27
+ * @LastEditTime: 2020-07-21 16:32:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \blog_vuee:\JSWorkSpace\master-ui\webpack.common.js
@@ -156,6 +156,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public/index.html"),
+      title:"Master UI",
       meta: {
         viewport:
           "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
