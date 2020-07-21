@@ -10,6 +10,9 @@
         vertical-align middle // 两个行内元素都设置的话，中线对其
         &--circle
             animation spin $loading-spinner-animation-duration infinite linear
+        &--circle.m-icon
+            //紧挨着代表是兄弟元素
+            color white
         &--spinner
             animation spin $loading-circle-animation-duration infinite steps(12) // 使其进行8方位旋转
         &--line-spinner
@@ -50,4 +53,3 @@
         justify-content center
         .m-loading_text
             margin $padding-xs 0 0
-
