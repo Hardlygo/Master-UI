@@ -1,14 +1,17 @@
 {
   "name": "master-ui",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Vue mobile UI",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open --config webpack.dev.js --host 0.0.0.0"
+    "start": "webpack-dev-server --open --config webpack.dev.js --host 0.0.0.0",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.prod.js",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d dist"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["vue","mobile UI"],
+  "author": "hardly",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.10.1",
@@ -19,6 +22,7 @@
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
     "file-loader": "^6.0.0",
+    "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-loader": "^3.0.0",

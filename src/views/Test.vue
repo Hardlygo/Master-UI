@@ -412,6 +412,7 @@
         <m-checkbox-group
           v-model="result"
           ref="checkboxGroup"
+          max="2"
           direction="row"
         >
           <m-checkbox
@@ -422,6 +423,10 @@
             value="打代码"
             icon-size="24px"
           >打代码</m-checkbox>
+          <m-checkbox
+            value="打球"
+            icon-size="24px"
+          >打球</m-checkbox>
         </m-checkbox-group>
       {{result}}
       </div>
