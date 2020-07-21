@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-30 10:44:34
- * @LastEditTime: 2020-07-21 16:32:34
+ * @LastEditTime: 2020-07-21 21:15:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \blog_vuee:\JSWorkSpace\master-ui\webpack.common.js
@@ -23,7 +23,8 @@ function resolvePath(pathName) {
 module.exports = {
   //不同环境有不同entry，common文件不配置
   output: {
-    filename: devMode ? "[name].bundle.js" : "[name].[hash:8].js",
+    filename: devMode ? "[name].bundle.js" : "js/[name].[contenthash:10].js",
+    chunkFilename: 'js/[name].[contenthash:10]_chunk.js',//都放到js文件夹
     path: resolvePath("dist"),
   },
   resolve: {
@@ -151,8 +152,8 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: devMode ? "[name].css" : "[name].[hash].css",
-      chunkFilename: devMode ? "[id].css" : "[id].[hash].css",
+      filename: devMode ? "[name].css" : "css/[name].[hash].css",
+      chunkFilename: devMode ? "[id].css" : "css/[id].[hash].css",
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public/index.html"),
