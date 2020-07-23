@@ -6,6 +6,16 @@
         display flex
         justify-content center
         align-items center
+        flex-direction column
+        line-height 1.6
+        &--icon
+            font-size 40px
+            border-radius 100%
+        &--text
+            font-size 12px
+            font-weight 500
+            font-family Avenir-Heavy, PingFang SC, Helvetica Neue, Arial, sans-serif
+            color #646566
     &_badge-wrapper
         position absolute
         flex 0 1
@@ -13,3 +23,30 @@
         top 0
         width 100%
         height 100%
+        &_badge
+            box-sizing border-box
+            background red
+            color rgb(255, 255, 255)
+            font-size 12px
+            font-weight 500
+            font-family Avenir-Heavy, PingFang SC, Helvetica Neue, Arial, sans-serif
+            line-height 14px
+            min-width 16px
+            pointer-events auto
+            position absolute
+            text-align center
+            white-space nowrap
+            border-radius 16px
+            padding 0 3px
+
+            &--bordered
+                border 1px solid #fff
+        &_dot
+            position: absolute;
+            box-sizing border-box
+            background red
+            height 8px
+            min-width 0px
+            width 8px
+            border-radius 4px
+            padding 0px

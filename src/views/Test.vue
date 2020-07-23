@@ -428,7 +428,35 @@
             icon-size="24px"
           >打球</m-checkbox>
         </m-checkbox-group>
-      {{result}}
+        {{result}}
+      </div>
+    </m-cell-group>
+    <m-cell-group
+      border
+      title="badge"
+    >
+      <div style="padding:10px">
+        <m-badge
+          badge="90"
+          icon="https://cdn.vuetifyjs.com/images/lists/2.jpg"
+          overlay-max
+        />
+        <m-badge
+          badge-type="dot"
+          icon="https://cdn.vuetifyjs.com/images/lists/2.jpg"
+          overlay-middle
+        />
+        <m-badge
+          badge-type="dot"
+          icon="https://cdn.vuetifyjs.com/images/lists/2.jpg"
+          text="今天星期五"
+          overlay-max
+        />
+        <m-badge
+          badge="99+"
+          text="今天星期五"
+          overlay-middle
+        />
       </div>
     </m-cell-group>
   </div>
@@ -451,6 +479,7 @@ import MRadio from "@/components/m-radio";
 import MRadioGroup from "@/components/m-radio-group";
 import MCheckbox from "@/components/m-checkbox";
 import MCheckboxGroup from "@/components/m-checkbox-group";
+import MBadge from "@/components/m-badge";
 
 export default {
   components: {
@@ -469,7 +498,8 @@ export default {
     MRadio,
     MRadioGroup,
     MCheckbox,
-    MCheckboxGroup
+    MCheckboxGroup,
+    MBadge,
   },
   data() {
     return {
@@ -483,7 +513,7 @@ export default {
       showToast: false,
       myval: "",
       isChecked: false,
-      result: ["打游戏"]
+      result: ["打游戏"],
     };
   },
   mounted() {
@@ -494,12 +524,12 @@ export default {
   methods: {
     showDialog() {
       this.$dialog.confirm({
-        content: "弹窗内容"
+        content: "弹窗内容",
       });
     },
     methodToast() {
       this.$toast.success({
-        text: "数据加载成功"
+        text: "数据加载成功",
       });
     },
     twoToast() {
@@ -516,7 +546,7 @@ export default {
       const toast = Toast.loading({
         timeout: 0, // 持续展示 toast
         forbidClick: true,
-        text: "倒计时 3 秒"
+        text: "倒计时 3 秒",
       });
 
       let second = 3;
@@ -530,8 +560,8 @@ export default {
           Toast.destroy();
         }
       }, 1000);
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
