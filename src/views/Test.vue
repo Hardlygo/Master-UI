@@ -442,18 +442,23 @@
           overlay-max
         />
         <m-badge
+          bottom
+          offset-y="10"
+          offset-x="10"
           badge-type="dot"
+          color="green"
           icon="https://cdn.vuetifyjs.com/images/lists/2.jpg"
           overlay-middle
         />
         <m-badge
           badge-type="dot"
-          icon="https://cdn.vuetifyjs.com/images/lists/2.jpg"
+         content-type="text"
           text="今天星期五"
-          overlay-max
+          overlay-small
         />
         <m-badge
           badge="99+"
+          content-type="text"
           text="今天星期五"
           overlay-middle
         />

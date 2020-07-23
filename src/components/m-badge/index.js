@@ -1,7 +1,11 @@
 //用于图标或信息右上角提示，比如未读消息
 import "./index.styl";
 
+//component
 import MIcon from "../m-icon";
+
+//util
+import { convertToUnit } from "../../utils";
 
 import { createNameSpace } from "../../utils";
 const { bem } = createNameSpace("badge");
@@ -27,15 +31,18 @@ export default {
     },
     contentType: {
       validator: function(value) {
-        // 这个值必须匹配下列字符串中的一个,text是文字，icon是图表或图片,both是两者都要
-        return ["text", "icon", "both"].indexOf(value) !== -1;
+        // 这个值必须匹配下列字符串中的一个,text是文字，icon是图表或图片
+        return ["text", "icon"].indexOf(value) !== -1;
       },
-      default: "both",
+      default: "icon",
     },
     overlayMiddle: [Boolean],
     overlayMax: [Boolean],
     overlaySmall: [Boolean],
-
+    offsetX: [String, Number],
+    offsetY: [String, Number],
+    left: [Boolean],
+    bottom: [Boolean],
     bordered: {
       type: Boolean,
       default: true,
@@ -49,51 +56,74 @@ export default {
     text: String,
   },
   computed: {
-    badgeStyle() {
-      let badgeStyle = {
-        bottom: " calc(100% - 4px)",
-        left: "calc(100% - 4px)",
-        right: "auto",
-        top: "auto",
-      };
-      if (this["overlaySmall"]) {
-        badgeStyle = {
-          bottom: "calc(100% - 2px)",
-          left: "calc(100% - 2px)",
-          right: "auto",
-          top: "auto",
-        };
-      }
-      if (this["overlayMiddle"]) {
-        badgeStyle = {
-          bottom: "calc(100% - 8px)",
-          left: "calc(100% - 8px)",
-          right: "auto",
-          top: "auto",
-        };
-      }
-      if (this["overlayMax"]) {
-        badgeStyle = {
-          bottom: "calc(100% - 12px)",
-          left: "calc(100% - 12px)",
-          right: "auto",
-          top: "auto",
-        };
-      }
-      return badgeStyle;
+    computedXOffset() {
+      return this.calcPosition(this.offsetX);
     },
+    computedYOffset() {
+      return this.calcPosition(this.offsetY);
+    },
+    computedTop() {
+      return this.bottom ? this.computedYOffset : "auto";
+    },
+    computedBottom() {
+      return this.bottom ? "auto" : this.computedYOffset;
+    },
+    computedLeft() {
+      return this.left ? "auto" : this.computedXOffset;
+    },
+    computedRight() {
+      return !this.left ? "auto" : this.computedXOffset;
+    },
+    // Default fallback if offsetX
+    // or offsetY are undefined.
+    offset() {
+      const { overlaySmall, overlayMiddle, overlayMax } = this;
+      let defaultOffset = "4";
+      if (overlayMax) {
+        defaultOffset = "12";
+      } else if (overlayMiddle) {
+        defaultOffset = "8";
+      } else if (overlaySmall) {
+        defaultOffset = "2";
+      }
+      return defaultOffset
+    },
+
+    badgeStyle() {
+      console.log( {
+        bottom: this.computedBottom,
+        left: this.computedLeft,
+        right: this.computedRight,
+        top: this.computedTop,
+      });
+      return {
+        bottom: this.computedBottom,
+        left: this.computedLeft,
+        right: this.computedRight,
+        top: this.computedTop,
+      };
+    },
+    colorSyle(){
+      if(this.color){
+        return {background:this.color}
+      }
+    }
   },
   methods: {
+    calcPosition(offset) {
+      console.log(offset, this.offset);
+      return `calc(100% - ${convertToUnit(offset || this.offset)})`;
+    },
     genContent() {
-      const { icon, text } = this;
+      const { icon, text, contentType } = this;
       let iconContent = null;
       let textContent = null;
-      if (icon) {
+      if (contentType === "icon" && icon) {
         iconContent = (
           <m-icon name={icon} class={[bem("content", { icon })]}></m-icon>
         );
       }
-      if (text) {
+      if (contentType === "text" && text) {
         textContent = <span class={[bem("content", { text })]}>{text}</span>;
       }
       return (
@@ -110,7 +140,7 @@ export default {
         if (badgeType === "badge") {
           info = (
             <div
-              style={{ ...this.badgeStyle }}
+              style={{ ...this.badgeStyle,...this.colorSyle }}
               class={[bem("badge-wrapper_badge", { bordered })]}
             >
               {badge}
@@ -120,7 +150,7 @@ export default {
         if (badgeType === "dot") {
           info = (
             <div
-              style={{ ...this.badgeStyle }}
+              style={{ ...this.badgeStyle,...this.colorSyle }}
               class={[bem("badge-wrapper_dot")]}
             ></div>
           );

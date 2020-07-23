@@ -25,3 +25,13 @@ export function isNum(val) {
   const param = `${val}`;
   return /^\d+(\.\d+)?$/.test(param);
 }
+
+export function convertToUnit(str, unit = "px") {
+  if (str == null || str === "") {
+    return undefined;
+  } else if (isNum(str)) {
+    return `${Number(str)}${unit}`;
+  } else {
+    return String(str);
+  }
+}
