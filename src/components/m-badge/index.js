@@ -47,13 +47,14 @@ export default {
       type: Boolean,
       default: true,
     },
-    iconRounded: Boolean,
-    iconSize: [String, Number],
     //dot的颜色或info的背景色
     color: String,
-
+    
     //底下内容
     icon: String,
+    iconRounded: Boolean,
+    iconSize: [String, Number],
+    iconColor:String,
     text: String,
   },
   computed: {
@@ -110,6 +111,13 @@ export default {
         };
       }
     },
+    contentIconColorStyle() {
+      if (this.iconColor) {
+        return {
+          color: this.iconColor,
+        };
+      }
+    },
   },
   methods: {
     calcPosition(offset) {
@@ -123,7 +131,7 @@ export default {
         iconContent = (
           <m-icon
             name={icon}
-            style={{...this.contentIconSizeStyle}}
+            style={{ ...this.contentIconSizeStyle,...this.contentIconColorStyle }}
             class={[bem("content", { icon, "icon-rounded": this.iconRounded })]}
           ></m-icon>
         );

@@ -440,6 +440,7 @@
           badge="99+"
           icon="all-o"
           icon-size="27"
+          icon-color="lightblue"
           overlay-max
           style="margin-right:10px"
         />
