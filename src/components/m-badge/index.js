@@ -9,53 +9,58 @@ import { convertToUnit } from "../../utils";
 
 import { createNameSpace } from "../../utils";
 const { bem } = createNameSpace("badge");
+
+export const badgeProps={
+  badgeType: {
+    validator: function(value) {
+      // 这个值必须匹配下列字符串中的一个,dot是红点或其他颜色的点，info是数字或其他的文字
+      return ["dot", "badge"].indexOf(value) !== -1;
+    },
+    default: "badge",
+  },
+  showBadge: {
+    type: Boolean,
+    default: true,
+  },
+  //当badgeType是badge时候，badge 的数值
+  badge: {
+    type: [String, Number],
+  },
+  contentType: {
+    validator: function(value) {
+      // 这个值必须匹配下列字符串中的一个,text是文字，icon是图表或图片
+      return ["text", "icon"].indexOf(value) !== -1;
+    },
+    default: "icon",
+  },
+  overlayMiddle: [Boolean],
+  overlayMax: [Boolean],
+  overlaySmall: [Boolean],
+  offsetX: [String, Number],
+  offsetY: [String, Number],
+  left: [Boolean],
+  bottom: [Boolean],
+  bordered: {
+    type: Boolean,
+    default: true,
+  },
+  //dot的颜色或info的背景色
+  color: String,
+  
+  //底下内容
+  icon: String,
+  iconRounded: Boolean,
+  iconSize: [String, Number],
+  iconColor:String,
+  text: String,
+}
 //slot:badge   slot content
 // badge要有一个动画
 export default {
+  inheritAttr:true,
   name: "MBadge",
   props: {
-    badgeType: {
-      validator: function(value) {
-        // 这个值必须匹配下列字符串中的一个,dot是红点或其他颜色的点，info是数字或其他的文字
-        return ["dot", "badge"].indexOf(value) !== -1;
-      },
-      default: "badge",
-    },
-    showBadge: {
-      type: Boolean,
-      default: true,
-    },
-    //当badgeType是badge时候，badge 的数值
-    badge: {
-      type: [String, Number],
-    },
-    contentType: {
-      validator: function(value) {
-        // 这个值必须匹配下列字符串中的一个,text是文字，icon是图表或图片
-        return ["text", "icon"].indexOf(value) !== -1;
-      },
-      default: "icon",
-    },
-    overlayMiddle: [Boolean],
-    overlayMax: [Boolean],
-    overlaySmall: [Boolean],
-    offsetX: [String, Number],
-    offsetY: [String, Number],
-    left: [Boolean],
-    bottom: [Boolean],
-    bordered: {
-      type: Boolean,
-      default: true,
-    },
-    //dot的颜色或info的背景色
-    color: String,
-    
-    //底下内容
-    icon: String,
-    iconRounded: Boolean,
-    iconSize: [String, Number],
-    iconColor:String,
-    text: String,
+   ...badgeProps
   },
   computed: {
     computedXOffset() {
@@ -125,6 +130,7 @@ export default {
     },
     genContent() {
       const { icon, text, contentType } = this;
+      
       let iconContent = null;
       let textContent = null;
       if (contentType === "icon" && icon) {

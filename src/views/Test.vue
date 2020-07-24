@@ -483,9 +483,9 @@
       <div style="padding:10px">
         <m-navbar-item
           icon="all-o"
-          text="全部"
-          badge="99+"
-        ></m-navbar-item>
+          badge-type="dot"
+          dot
+        >全部</m-navbar-item>
       </div>
     </m-cell-group>
   </div>

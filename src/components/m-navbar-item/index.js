@@ -4,6 +4,7 @@ import "./index.styl";
 //component
 import MIcon from "../m-icon";
 import MBadge from "../m-badge";
+import { badgeProps } from "../m-badge";
 
 //mxins
 import { ChildernMixin } from "../../mixins/relation";
@@ -25,36 +26,68 @@ export default {
   mixins: [ChildernMixin("MNavbar"), SlotsMixin],
   props: {
     ...routeProps,
+    ...badgeProps,
     dot: Boolean,
-    badge: [String, Number],
-    //地下的icon
-    icon: {
-      type: String,
-      required: true,
-    },
-    text: String,
+    // badge: [String, Number],
+    // //地下的icon
+    // icon: {
+    //   type: String,
+    //   required: true,
+    // },
     //当前选中的item绑定的值
     value: [String, Number],
   },
   computed: {
     showDadgeorDot() {
-      return this.badge || this.dot;
+      return !!this.badge || !!this.dot;
     },
-    badgeType(){
-        return this.dot?"dot":"badge"
-    }
+    // badgeType() {
+    //   return this.dot ? "dot" : "badge";
+    // },
   },
   methods: {
     genIcon() {
+      const {
+        showDadgeorDot,
+        badgeType,
+        icon,
+        badge,
+        dot,
+        left,
+        bottom,
+        offsetX,
+        offsetY,
+        overlayMiddle,
+        overlayMax,
+        overlaySmall,
+        color,
+        iconRounded,
+        iconSize,
+        iconColor,
+      } = this;
+      const badgeProps = {
+        showBadge: showDadgeorDot,
+        badgeType,
+        icon,
+        badge,
+        dot,
+        left,
+        bottom,
+        offsetX,
+        offsetY,
+        overlayMiddle,
+        overlayMax,
+        overlaySmall,
+        color,
+        iconRounded,
+        iconSize,
+        iconColor,
+        contentType: "icon",
+      };
+      
       return (
         <div class={[bem("icon")]}>
-          <MBadge
-            showBadge={this.showDadgeorDot}
-            badgeType={this.badgeType}
-            icon={this.icon}
-            badge={this.badge}
-            dot={this.dot}
-          ></MBadge>
+          <MBadge props={badgeProps}></MBadge>
         </div>
       );
     },
@@ -64,9 +97,7 @@ export default {
     return (
       <div class={[bem()]}>
         {this.genIcon()}
-        <div class={bem("text")}>
-          {this.text || this.slots("default", { active })}
-        </div>
+        <div class={bem("text")}>{this.slots("default", { active })}</div>
       </div>
     );
   },
