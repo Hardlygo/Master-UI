@@ -406,7 +406,7 @@
     </m-cell-group>
     <m-cell-group
       border
-      title="checkbox-group"
+      title="checkbox-group(至多选两个)"
     >
       <div style="padding:10px">
         <m-checkbox-group
@@ -437,22 +437,32 @@
     >
       <div style="padding:10px">
         <m-badge
+          badge="99+"
+          icon="all-o"
+          icon-size="27"
+          overlay-max
+          style="margin-right:10px"
+        />
+
+        <m-badge
           badge="90"
           icon="https://cdn.vuetifyjs.com/images/lists/2.jpg"
           overlay-max
         />
+
         <m-badge
           bottom
           offset-y="10"
           offset-x="10"
           badge-type="dot"
           color="green"
+          icon-rounded
           icon="https://cdn.vuetifyjs.com/images/lists/2.jpg"
           overlay-middle
         />
         <m-badge
           badge-type="dot"
-         content-type="text"
+          content-type="text"
           text="今天星期五"
           overlay-small
         />
@@ -462,6 +472,7 @@
           text="今天星期五"
           overlay-middle
         />
+
       </div>
     </m-cell-group>
   </div>

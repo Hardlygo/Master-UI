@@ -47,7 +47,8 @@ export default {
       type: Boolean,
       default: true,
     },
-
+    iconRounded: Boolean,
+    iconSize: [String, Number],
     //dot的颜色或info的背景色
     color: String,
 
@@ -86,16 +87,10 @@ export default {
       } else if (overlaySmall) {
         defaultOffset = "2";
       }
-      return defaultOffset
+      return defaultOffset;
     },
 
     badgeStyle() {
-      console.log( {
-        bottom: this.computedBottom,
-        left: this.computedLeft,
-        right: this.computedRight,
-        top: this.computedTop,
-      });
       return {
         bottom: this.computedBottom,
         left: this.computedLeft,
@@ -103,15 +98,21 @@ export default {
         top: this.computedTop,
       };
     },
-    colorSyle(){
-      if(this.color){
-        return {background:this.color}
+    colorSyle() {
+      if (this.color) {
+        return { background: this.color };
       }
-    }
+    },
+    contentIconSizeStyle() {
+      if (this.iconSize) {
+        return {
+          fontSize: convertToUnit(this.iconSize),
+        };
+      }
+    },
   },
   methods: {
     calcPosition(offset) {
-      console.log(offset, this.offset);
       return `calc(100% - ${convertToUnit(offset || this.offset)})`;
     },
     genContent() {
@@ -120,7 +121,11 @@ export default {
       let textContent = null;
       if (contentType === "icon" && icon) {
         iconContent = (
-          <m-icon name={icon} class={[bem("content", { icon })]}></m-icon>
+          <m-icon
+            name={icon}
+            style={{...this.contentIconSizeStyle}}
+            class={[bem("content", { icon, "icon-rounded": this.iconRounded })]}
+          ></m-icon>
         );
       }
       if (contentType === "text" && text) {
@@ -140,7 +145,7 @@ export default {
         if (badgeType === "badge") {
           info = (
             <div
-              style={{ ...this.badgeStyle,...this.colorSyle }}
+              style={{ ...this.badgeStyle, ...this.colorSyle }}
               class={[bem("badge-wrapper_badge", { bordered })]}
             >
               {badge}
@@ -150,7 +155,7 @@ export default {
         if (badgeType === "dot") {
           info = (
             <div
-              style={{ ...this.badgeStyle,...this.colorSyle }}
+              style={{ ...this.badgeStyle, ...this.colorSyle }}
               class={[bem("badge-wrapper_dot")]}
             ></div>
           );
