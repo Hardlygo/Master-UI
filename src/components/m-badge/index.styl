@@ -1,23 +1,22 @@
 .m-badge
     position relative
     display inline-block
-    line-height 1
+    line-height $badge-line-height
     &_content
         display flex
         justify-content center
         align-items center
         flex-direction column
-        line-height 1.6
         &--icon
-            font-size 40px //icon大小
-            border-radius 6px
+            font-size $badge-content-icon-size //icon大小
+            border-radius $badge-content-border-radius
         &--icon-rounded
-            border-radius 100%
+            border-radius $badge-content-icon-rounded
         &--text
-            font-size 12px
-            font-weight 500
-            font-family Avenir-Heavy, PingFang SC, Helvetica Neue, Arial, sans-serif
-            color #646566
+            font-size $badge-text-font-size
+            font-weight $badge-text-font-weight
+            font-family $badge-font-family
+            color $badge-content-text-color//#646566
     &_badge-wrapper
         position absolute
         flex 0 1
@@ -27,27 +26,27 @@
         height 100%
         &_badge
             box-sizing border-box
-            background red
-            color rgb(255, 255, 255)
-            font-size 12px
-            font-weight 500
-            font-family Avenir-Heavy, PingFang SC, Helvetica Neue, Arial, sans-serif
-            line-height 14px
-            min-width 16px
+            background $badge-badge-color
+            color $white
+            font-size $badge-text-font-size
+            font-weight $badge-text-font-weight
+            font-family $badge-font-family
+            line-height $badge-badge-line-height
+            min-width $badge-badge-width
             pointer-events auto
             position absolute
             text-align center
             white-space nowrap
-            border-radius 16px
-            padding 0 3px
+            border-radius $badge-badge-border-radius
+            padding $badge-badge-padding
             &--bordered
                 border 1px solid #fff
         &_dot
             position absolute
             box-sizing border-box
             background red
-            height 8px
+            height $badge-badge-dot-size
             min-width 0px
-            width 8px
-            border-radius 4px
+            width $badge-badge-dot-size
+            border-radius $badge-badge-dot-border-radius
             padding 0px
