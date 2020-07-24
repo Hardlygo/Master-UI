@@ -476,6 +476,18 @@
 
       </div>
     </m-cell-group>
+    <m-cell-group
+      border
+      title="navbar"
+    >
+      <div style="padding:10px">
+        <m-navbar-item
+          icon="all-o"
+          text="全部"
+          badge="99+"
+        ></m-navbar-item>
+      </div>
+    </m-cell-group>
   </div>
 </template>
 <script>
@@ -497,6 +509,7 @@ import MRadioGroup from "@/components/m-radio-group";
 import MCheckbox from "@/components/m-checkbox";
 import MCheckboxGroup from "@/components/m-checkbox-group";
 import MBadge from "@/components/m-badge";
+import MNavbarItem from "@/components/m-navbar-item";
 
 export default {
   components: {
@@ -517,6 +530,7 @@ export default {
     MCheckbox,
     MCheckboxGroup,
     MBadge,
+    MNavbarItem,
   },
   data() {
     return {

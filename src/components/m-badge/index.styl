@@ -2,13 +2,14 @@
     position relative
     display inline-block
     line-height $badge-line-height
+    font-size $badge-content-icon-size // icon大小
     &_content
         display flex
         justify-content center
         align-items center
         flex-direction column
         &--icon
-            font-size $badge-content-icon-size //icon大小
+            font-size inherit // icon大小
             border-radius $badge-content-border-radius
         &--icon-rounded
             border-radius $badge-content-icon-rounded
@@ -16,7 +17,7 @@
             font-size $badge-text-font-size
             font-weight $badge-text-font-weight
             font-family $badge-font-family
-            color $badge-content-text-color//#646566
+            color $badge-content-text-color // #646566
     &_badge-wrapper
         position absolute
         flex 0 1

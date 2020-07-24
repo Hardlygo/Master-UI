@@ -23,3 +23,9 @@ export function functionalRoute(vue) {
   route(vue && vue.$router, vue.$props);
   //   route(vue.parent && vue.parent.$router, vue.$props);
 }
+
+export const routeProps = {
+  url: String,
+  replace: Boolean,
+  to: [String, Object],
+};
