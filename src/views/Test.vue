@@ -478,7 +478,7 @@
     </m-cell-group>
     <m-cell-group
       border
-      title="navbar"
+      title="navbar-item"
     >
       <div style="padding:10px">
         <m-navbar-item
@@ -491,7 +491,7 @@
       </div>
     </m-cell-group>
 
-    <m-navbar v-model="active">
+    <m-navbar v-model="active" placeholder >
       <m-navbar-item
         icon="all-o"
         icon-size="24"

@@ -57,7 +57,6 @@ export default {
   },
 
   mounted() {
-      
     if (this.placeholder && this.fixed) {
       this.height = this.$refs.tabbar.getBoundingClientRect().height;
     }
