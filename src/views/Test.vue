@@ -490,6 +490,20 @@
         >全部</m-navbar-item>
       </div>
     </m-cell-group>
+
+    <m-navbar v-model="active">
+      <m-navbar-item
+        icon="all-o"
+        icon-size="24"
+        offset-y="8"
+        offset-x="8"
+        dot
+      >全部</m-navbar-item>
+      <m-navbar-item
+        icon="business-man-o"
+        icon-size="24"
+      >我的</m-navbar-item>
+    </m-navbar>
   </div>
 </template>
 <script>
@@ -512,6 +526,7 @@ import MCheckbox from "@/components/m-checkbox";
 import MCheckboxGroup from "@/components/m-checkbox-group";
 import MBadge from "@/components/m-badge";
 import MNavbarItem from "@/components/m-navbar-item";
+import MNavbar from "@/components/m-navbar";
 
 export default {
   components: {
@@ -533,6 +548,7 @@ export default {
     MCheckboxGroup,
     MBadge,
     MNavbarItem,
+    MNavbar,
   },
   data() {
     return {
@@ -547,6 +563,7 @@ export default {
       myval: "",
       isChecked: false,
       result: ["打游戏"],
+      active: 0,
     };
   },
   mounted() {

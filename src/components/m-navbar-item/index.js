@@ -12,7 +12,7 @@ import { ChildernMixin } from "../../mixins/relation";
 import { SlotsMixin } from "../../mixins/slots";
 
 //util
-import { convertToUnit } from "../../utils";
+import { convertToUnit, isObject, isDef } from "../../utils";
 
 //bem
 import { createNameSpace } from "../../utils";
@@ -44,9 +44,28 @@ export default {
     // badgeType() {
     //   return this.dot ? "dot" : "badge";
     // },
+    //路由模式下，是否是被激活了
+    routeActive() {
+      //如果有传入to配置，则看看是那种路由模式匹配上的
+      const { to, $route } = this;
+      if (to && $route) {
+        const config = isObject(to) ? to : { path: to };
+        const pathMatched = config.path === $route.path;
+        const nameMatched = isDef(config.name) && config.name === $route.name;
+        return pathMatched || nameMatched;
+      }
+    },
+  },
+  data() {
+    return { active: false };
   },
   methods: {
-    genIcon() {
+    onClick(event) {
+      this.parent.onChange(this.name || this.index);
+      this.$emit("click", event);
+      route(this.$router, this);
+    },
+    genIcon(color) {
       let {
         showDadgeorDot,
         badgeType,
@@ -60,17 +79,14 @@ export default {
         overlayMiddle,
         overlayMax,
         overlaySmall,
-        color,
         iconRounded,
         iconSize,
         iconColor,
       } = this;
-      if(this.dot)
-        badgeType="dot"
-      if(this.badge)
-        badgeType="badge"
-      if(!this.dot&&!this.badge){
-        showDadgeorDot=false
+      if (this.dot) badgeType = "dot";
+      if (this.badge) badgeType = "badge";
+      if (!this.dot && !this.badge) {
+        showDadgeorDot = false;
       }
       const badgeProps = {
         showBadge: showDadgeorDot,
@@ -91,7 +107,7 @@ export default {
         iconColor,
         contentType: "icon",
       };
-      
+
       return (
         <div class={[bem("icon")]}>
           <MBadge props={badgeProps}></MBadge>
@@ -100,11 +116,17 @@ export default {
     },
   },
   render() {
-    const active = false;
+    const active =
+      this.parent && this.parent.route ? this.routeActive : this.active;
+    const color =
+      this.parent && this.parent[active ? "activeColor" : "inactiveColor"];
+
     return (
-      <div class={[bem()]}>
-        {this.genIcon()}
-        <div class={bem("text")}>{this.slots("default", { active })}</div>
+      <div class={[bem({ active })]} onClick={this.onClick}>
+        {this.genIcon(color)}
+        <div class={bem("text")}>
+          {this.text || this.slots("default", { active })}
+        </div>
       </div>
     );
   },
