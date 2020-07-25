@@ -16,7 +16,10 @@ export default {
   props: {
     route: Boolean,
     zIndex: [Number, String],
-    placeholder: Boolean,
+    placeholder: {
+      type: Boolean,
+      default: true,
+    },
     activeColor: String,
     inactiveColor: String,
     value: {

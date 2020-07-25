@@ -491,7 +491,7 @@
       </div>
     </m-cell-group>
 
-    <m-navbar v-model="active" placeholder >
+    <m-navbar v-model="active"  >
       <m-navbar-item
         icon="all-o"
         icon-size="24"
