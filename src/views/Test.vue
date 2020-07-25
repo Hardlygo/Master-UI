@@ -483,7 +483,9 @@
       <div style="padding:10px">
         <m-navbar-item
           icon="all-o"
-          badge-type="dot"
+          icon-size="24"
+          offset-y="8"
+          offset-x="8"
           dot
         >全部</m-navbar-item>
       </div>

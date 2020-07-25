@@ -38,16 +38,16 @@ export default {
     value: [String, Number],
   },
   computed: {
-    showDadgeorDot() {
-      return !!this.badge || !!this.dot;
-    },
+    // showDadgeorDot() {
+    //   return !!this.badge || !!this.dot;
+    // },
     // badgeType() {
     //   return this.dot ? "dot" : "badge";
     // },
   },
   methods: {
     genIcon() {
-      const {
+      let {
         showDadgeorDot,
         badgeType,
         icon,
@@ -65,6 +65,13 @@ export default {
         iconSize,
         iconColor,
       } = this;
+      if(this.dot)
+        badgeType="dot"
+      if(this.badge)
+        badgeType="badge"
+      if(!this.dot&&!this.badge){
+        showDadgeorDot=false
+      }
       const badgeProps = {
         showBadge: showDadgeorDot,
         badgeType,
