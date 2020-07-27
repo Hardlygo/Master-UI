@@ -85,7 +85,7 @@ export default {
           ref="tabbar"
           style={{ zIndex: this.zIndex }}
           class={[
-            { ["m-hairline-top-bottom"]: this.border },
+            { ["m-hairline--top-bottom"]: this.border },
             bem({
               unfit: !this.fit,
               fixed: this.fixed,
