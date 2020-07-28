@@ -8,7 +8,7 @@ const { bem } = createNameSpace("dot-badge");
 //utils
 import { isDef } from "../../utils";
 
-//提供取得slot的方法=》this.slots
+//提供取得slot的方法=》this.slots mixins
 import { SlotsMixin } from "../../mixins/slots";
 
 export default {
