@@ -8,6 +8,21 @@
 --> 
 <template>
   <div>
+    <m-tabs v-model="activeTab">
+      <m-tab
+        title="再"
+        value="a"
+      ><div style="padding:10px">让我们</div></m-tab>
+      <m-tab
+        title="坚持"
+        value="b"
+      ><div style="padding:10px">一起努力吧</div></m-tab>
+      <m-tab
+        title="一下"
+        value="c"
+      ><div style="padding:10px">What we want is right in the corner!!!</div></m-tab>
+    </m-tabs>
+
     <m-cell-group
       border
       title="我是头部"
@@ -491,7 +506,7 @@
       </div>
     </m-cell-group>
 
-    <m-navbar v-model="active"  >
+    <m-navbar v-model="active">
       <m-navbar-item
         icon="all-o"
         icon-size="24"
@@ -527,6 +542,8 @@ import MCheckboxGroup from "@/components/m-checkbox-group";
 import MBadge from "@/components/m-badge";
 import MNavbarItem from "@/components/m-navbar-item";
 import MNavbar from "@/components/m-navbar";
+import MTabs from "@/components/m-tabs";
+import MTab from "@/components/m-tab";
 
 export default {
   components: {
@@ -549,6 +566,8 @@ export default {
     MBadge,
     MNavbarItem,
     MNavbar,
+    MTabs,
+    MTab,
   },
   data() {
     return {
@@ -564,6 +583,7 @@ export default {
       isChecked: false,
       result: ["打游戏"],
       active: 0,
+      activeTab: "a",
     };
   },
   mounted() {

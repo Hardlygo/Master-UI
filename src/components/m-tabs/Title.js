@@ -4,7 +4,10 @@ import { createNameSpace, isDef } from "../../utils";
 import DotBadge from "../dot-badge";
 const { bem } = createNameSpace("tab");
 
+//提供取得slot的方法=》this.slots
+import { SlotsMixin } from "../../mixins/slots";
 export default {
+  mixins:[SlotsMixin],
   props: {
     dot: Boolean,
     //是否为卡等其他样式

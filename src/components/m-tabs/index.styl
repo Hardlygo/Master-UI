@@ -9,22 +9,85 @@
     color $tab-text-color
     font-size $tab-font-size
     cursor pointer
-
     &--active
-        color: $tab-active-text-color
-        font-weight: $font-weight-bold
-
+        color $tab-active-text-color
+        font-weight $font-weight-bold
     &--diasbled
-        color: $tab-disabled-text-color
+        color $tab-disabled-text-color
         cursor not-allowed
-    
     &_text
         &--ellipsis
-            display: -webkit-box
+            display -webkit-box
             overflow hidden
-            -webkit-line-clamp:1
-            -webkit-box-orient: vertical
-    
+            -webkit-line-clamp 1
+            -webkit-box-orient vertical
     &-text-wrapper
         position relative
-        
+.m-tabs
+    position relative
+    &_wrap
+        overflow hidden
+        &--page-top
+            position fixed
+        &--content-bottom
+            top auto
+            bottom 0
+        &--scrollable
+            .m-tab
+                flex 0 0 22%
+                &--complete
+                    flex 1 0 auto
+            .m-tabs_nav
+                overflow-x auto
+                overflow-y hidden
+                -webkit-overflow-scrolling touch
+                &::-webkit-scrollbar
+                    display none
+    &_nav
+        position relative
+        display flex
+        background-color $tabs-nav-background-color
+        user-select none
+        &--line
+            box-sizing content-box
+            height 100%
+            padding-bottom 15px /* 15px padding to hide scrollbar in mobile safari */
+        &--card
+            box-sizing border-box
+            height $tabs-card-height
+            margin 0 $padding-md
+            border $border-width-base solid $tabs-default-color
+            border-radius $border-radius-sm
+            .m-tab
+                color $tabs-default-color
+                border-right $border-width-base solid $tabs-default-color
+                &:last-child
+                    border-right none
+                &.m-tab--active
+                    color $white
+                    background-color $tabs-default-color
+                &--disabled
+                    color $tab-disabled-text-color
+    &_line
+        position absolute
+        bottom 15px
+        left 0
+        z-index 1
+        height $tabs-bottom-bar-height
+        background-color $tabs-bottom-bar-color
+        border-radius $tabs-bottom-bar-height
+    &_track
+        position relative
+        display flex
+        width 100%
+        height 100%
+        will-change left
+    &_content
+        &--animated
+            overflow hidden
+    &--line
+        .m-tabs_wrap
+            height $tabs-line-height
+    &--card
+        >.m-tabs_wrap
+            height $tabs-card-height

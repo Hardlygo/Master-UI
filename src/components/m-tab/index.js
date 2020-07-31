@@ -47,7 +47,7 @@ export default {
     },
     inited(val) {
       if (this.parent.lazyRender && val) {
-        this.$nextTrick(() => {
+        this.$nextTick(() => {
           this.parent.$emit("rendered", this.computedVal, this.title);
         });
       }

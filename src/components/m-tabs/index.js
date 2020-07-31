@@ -1,3 +1,4 @@
+import "./index.styl";
 //mxins
 import { ParentMixin } from "../../mixins/relation";
 //提供取得slot的方法=》this.slots
@@ -98,7 +99,7 @@ export default {
   computed: {
     //是否可滑动
     scrollable() {
-      return this.childern.length > this.swipeThreshold || !this.ellipsis;
+      return this.children.length > this.swipeThreshold || !this.ellipsis;
     },
     navStyle() {
       return {
@@ -107,7 +108,7 @@ export default {
       };
     },
     currentVal() {
-      const activeTab = this.childern[this.currentIndex];
+      const activeTab = this.children[this.currentIndex];
       if (activeTab) {
         return activeTab.computedVal;
       }
@@ -119,12 +120,57 @@ export default {
       return 0;
     },
   },
+  watch: {
+    color: "setLine",
+
+    active(value) {
+      if (value !== this.currentVal) {
+        this.setCurrentIndexByVal(value);
+      }
+    },
+
+    children() {
+      this.setCurrentIndexByVal(this.currentVal || this.active);
+      this.setLine();
+
+      this.$nextTick(() => {
+        this.scrollIntoView(true);
+      });
+    },
+
+    currentIndex() {
+      this.scrollIntoView();
+      this.setLine();
+
+      // scroll to correct position
+      if (this.stickyFixed && !this.scrollspy) {
+        setRootScrollTop(Math.ceil(getElementTop(this.$el) - this.offsetTop));
+      }
+    },
+
+    scrollspy(val) {
+      if (val) {
+        on(this.scroller, "scroll", this.onScroll, true);
+      } else {
+        off(this.scroller, "scroll", this.onScroll);
+      }
+    },
+  },
+
+  mounted() {
+    this.init();
+  },
+
+  activated() {
+    this.init();
+    this.setLine();
+  },
   methods: {
     resize() {
       this.setLine();
     },
     init() {
-      this.$nextTrick(() => {
+      this.$nextTick(() => {
         this.inited = true;
         this.tabHeight = getVisibleHeight(this.$refs.wrap);
         this.scrollIntoView(true);
@@ -133,7 +179,7 @@ export default {
     // update nav bar
     setLine() {
       const shouldAnimate = this.inited;
-      this.$nextTrick(() => {
+      this.$nextTick(() => {
         const { titles } = this.$refs;
         if (
           !titles ||
@@ -167,8 +213,8 @@ export default {
     },
     // correct the index of active tab
     setCurrentIndexByVal(value) {
-      const matched = this.childern.filter((tab) => tab.computedVal === value);
-      const defaultIndex = (this.childern[0] || {}).index || 0;
+      const matched = this.children.filter((tab) => tab.computedVal === value);
+      const defaultIndex = (this.children[0] || {}).index || 0;
       this.setCurrentIndex(matched.length ? matched[0].index : defaultIndex);
     },
     setCurrentIndex(currentIndex) {
@@ -218,7 +264,7 @@ export default {
     },
     // emit event when clicked
     onClick(component, index) {
-      const { title, disabled, computedVal } = this.childern[index];
+      const { title, disabled, computedVal } = this.children[index];
       if (disabled) {
         this.$emit("disabled", computedVal, title);
       } else {
@@ -226,7 +272,7 @@ export default {
           this.setCurrentIndex(index), this.scrollToCurrentContent();
         });
         this.$emit("click", computedVal, title);
-        route(item.$router, component);
+        route(component.$router, component);
       }
     },
 
