@@ -9,11 +9,19 @@ export function scrollLeftTo(target, to, duration) {
   let count = 0;
   const from = target.scrollLeft;
   //帧数
-  const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16); //16ms一帧
-
+  const frames = duration === 0 ? 1 : Math.round((duration * 1000) / 16); //16ms一帧 (每秒60帧)
+  console.log("start："+target.scrollLeft)
   function animate() {
+    //向右向左滑动，公式是（tab宽度*tab数）-屏幕宽度=滑动最大值
     //一帧该滑动的距离（把要滑动的距离平均分给每一帧）
     target.scrollLeft += (to - from) / frames;
+      //scrollLeft大于等于0，小于等于最大值
+    console.log(
+      `count:${count}`,
+      `to:${to}`,
+      `((to - from) / frames):${(to - from) / frames}`,
+      `target.scrollLeft:${target.scrollLeft}`
+    );
 
     if (++count < frames) {
       scrollLeftRafId = runRaf(animate);

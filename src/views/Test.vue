@@ -12,15 +12,33 @@
       <m-tab
         title="再"
         value="a"
-      ><div style="padding:10px">让我们</div></m-tab>
+      >
+        <div style="padding:10px">让我们</div>
+      </m-tab>
       <m-tab
         title="坚持"
         value="b"
-      ><div style="padding:10px">一起努力吧</div></m-tab>
+      >
+        <div style="padding:10px">一起努力吧</div>
+      </m-tab>
       <m-tab
         title="一下"
         value="c"
-      ><div style="padding:10px">What we want is right in the corner!!!</div></m-tab>
+      >
+        <div style="padding:10px">What we want is right in the corner!!!</div>
+      </m-tab>
+      <m-tab
+        title="再次"
+        value="d"
+      >
+        <div style="padding:10px">过去的已经是过去了</div>
+      </m-tab>
+      <m-tab
+        title="出发吧"
+        value="e"
+      >
+        <div style="padding:10px">收拾好心情，再负重前行吧</div>
+      </m-tab>
     </m-tabs>
 
     <m-cell-group
@@ -583,13 +601,17 @@ export default {
       isChecked: false,
       result: ["打游戏"],
       active: 0,
-      activeTab: "a",
+      activeTab: "b",
     };
   },
   mounted() {
     // setTimeout(() => {
     //   this.showDialog();
     // }, 0);
+    console.log("activeTab: ", this.activeTab);
+    this.$watch("activeTab", function (newval, old) {
+      // console.log("newval,old: ", newval, old);
+    });
   },
   methods: {
     showDialog() {

@@ -28,6 +28,10 @@ import Title from "./Title";
 import Content from "./Content";
 export default {
   name: "MTabs",
+  model: {
+    prop: "value",
+    event: "input",
+  },
   mixins: [
     ParentMixin("MTabs"),
     BindEventMixin(function(bind) {
@@ -123,14 +127,14 @@ export default {
   watch: {
     color: "setLine",
 
-    active(value) {
-      if (value !== this.currentVal) {
-        this.setCurrentIndexByVal(value);
+    value(val, old) {
+      if (val !== this.currentVal) {
+        this.setCurrentIndexByVal(val);
       }
     },
 
     children() {
-      this.setCurrentIndexByVal(this.currentVal || this.active);
+      this.setCurrentIndexByVal(this.currentVal || this.value);
       this.setLine();
 
       this.$nextTick(() => {
@@ -156,7 +160,6 @@ export default {
       }
     },
   },
-
   mounted() {
     this.init();
   },
@@ -192,12 +195,15 @@ export default {
 
         const title = titles[this.currentIndex].$el;
         const { lineHeight, lineWidth } = this;
-        const width = isDef(lineWidth) ? lineWidth : title.offsetWidth / 2;
-        const left = title.offsetLeft + title.offsetWidth / 2;
 
+        const width = isDef(lineWidth) ? lineWidth : title.offsetWidth / 2;
+        const left = title.offsetLeft+ title.offsetWidth / 2;
+
+        //line的长度为title长度一半
         const lineStyle = {
           width: addUnit(width),
           backgroundColor: this.color,
+          //translateX(${left}px)为向右移动n-1个tab长度距离，再加上width长度一半，就到达了当前以当前tab中位线为起点， translateX(-50%)为向左移动自身宽度的一半，即width一半，通过向左移动自身长度一半达到中位线平分line
           transform: `translateX(${left}px) translateX(-50%)`,
         };
         if (shouldAnimate) {
@@ -269,7 +275,8 @@ export default {
         this.$emit("disabled", computedVal, title);
       } else {
         this.callBeforeChange(computedVal, () => {
-          this.setCurrentIndex(index), this.scrollToCurrentContent();
+          this.setCurrentIndex(index);
+          this.scrollToCurrentContent();
         });
         this.$emit("click", computedVal, title);
         route(component.$router, component);
@@ -277,15 +284,33 @@ export default {
     },
 
     scrollIntoView(immediate) {
+      // debugger
       const { titles } = this.$refs;
-      if (!this.scrollable || !this.titles || !this.titles[this.currentIndex]) {
+      console.log("this.scrollable: ", this.scrollable);
+      console.log(
+        "!this.scrollable || !this.titles || !this.titles[this.currentIndex]: ",
+        !this.scrollable || !this.titles || !this.titles[this.currentIndex]
+      );
+      console.log("!this.scrollable: ", !this.scrollable);
+      console.log(" !this.titles: ", !titles);
+      console.log(
+        "!this.titles[this.currentIndex]: ",
+        !titles[this.currentIndex]
+      );
+      if (!this.scrollable || !titles || !titles[this.currentIndex]) {
         return;
       }
       const { nav } = this.$refs;
-
+      // debugger;
       const title = titles[this.currentIndex].$el;
+      //为什么这样子算
       const to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2;
+      console.log("to: ", to);
+      console.log("title.offsetWidth: ", title.offsetWidth);
+      console.log("nav.offsetWidth: ", nav.offsetWidth);
+      console.log("title.offsetLeft : ", title.offsetLeft);
       scrollLeftTo(nav, to, immediate ? 0 : this.duration);
+      console.log("nav scrollLeft : ", nav.scrollLeft);
     },
 
     onStickyScroll(params) {
@@ -351,7 +376,7 @@ export default {
         disabled={item.disabled}
         scrollable={scrollable}
         activeColor={this.titleActiveColor}
-        inactiveColor={this.titleInactiveColor}
+        inactiveColor={this.titleOffColor}
         swipeThreshold={this.swipeThreshold}
         scopedSlots={{
           default: () => item.slots("title"),

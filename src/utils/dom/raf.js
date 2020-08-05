@@ -24,13 +24,13 @@ const animationFn = root.requestAnimationFrame || fallback;
 
 const cancelFn = root.cancelAnimationFrame || clearTimeout;
 
-//单次动画
+//单次动画，要实现无限循环，在animationCallbackFn再次声明runRaf(animationCallbackFn)即可
 export function runRaf(animationCallbackFn) {
   return animationFn.call(root, animationCallbackFn);
 }
 
-//无限循环动画
-function doubleRunRaf(animationCallbackFn) {
+// double raf for animation // use double raf to ensure animation can start
+export function doubleRunRaf(animationCallbackFn) {
   runRaf(() => {
     runRaf(animationCallbackFn);
   });
